@@ -1,10 +1,9 @@
 #!/bin/bash
 
 # Configuration
-DOCKER_DIR="/workspaces/magic-studio-demo-model-/docker"
-if [ ! -d "$DOCKER_DIR" ]; then
-    DOCKER_DIR="docker"
-fi
+# Find the script's directory and then the docker directory
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+DOCKER_DIR="$SCRIPT_DIR"
 
 ENV_FILE="$DOCKER_DIR/.env"
 EXAMPLE_FILE="$DOCKER_DIR/.env.example"
@@ -17,12 +16,12 @@ else
     
     # Generate random secret keys for security
     SECRET_KEY=$(openssl rand -hex 32)
-    sed -i "s/SECRET_KEY=.*/SECRET_KEY=$SECRET_KEY/" "$ENV_FILE"
+    sed -i "s/SECRET_KEY=.*/SECRET_KEY=$SECRET_KEY/g" "$ENV_FILE"
     
     # Update branding-related defaults if not already set
     # Using 'Magic Studio' as the default URL for internal services
-    sed -i "s/CONSOLE_API_URL=.*/CONSOLE_API_URL=http:\/\/localhost:5001/" "$ENV_FILE"
-    sed -i "s/CONSOLE_WEB_URL=.*/CONSOLE_WEB_URL=http:\/\/localhost:3000/" "$ENV_FILE"
+    sed -i "s/CONSOLE_API_URL=.*/CONSOLE_API_URL=http:\/\/localhost:5001/g" "$ENV_FILE"
+    sed -i "s/CONSOLE_WEB_URL=.*/CONSOLE_WEB_URL=http:\/\/localhost:3000/g" "$ENV_FILE"
     
     echo ".env created successfully."
 fi
