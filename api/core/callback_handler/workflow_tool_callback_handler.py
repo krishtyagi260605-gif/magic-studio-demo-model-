@@ -24,3 +24,7 @@ class MagicStudioWorkflowCallbackHandler(MagicStudioAgentCallbackHandler):
             print_text("Outputs: " + tool_output.model_dump_json()[:1000] + "\n", color=self.color)
             print_text("\n")
             yield tool_output
+
+
+# Backward-compatible alias for legacy imports still used across the backend.
+DifyWorkflowCallbackHandler = MagicStudioWorkflowCallbackHandler

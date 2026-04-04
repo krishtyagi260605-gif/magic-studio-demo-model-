@@ -122,3 +122,7 @@ class MagicStudioAgentCallbackHandler(BaseModel):
     def ignore_chat_model(self) -> bool:
         """Whether to ignore chat model callbacks."""
         return not magic_studio_config.DEBUG
+
+
+# Backward-compatible alias for legacy imports still used across the backend.
+DifyAgentCallbackHandler = MagicStudioAgentCallbackHandler
