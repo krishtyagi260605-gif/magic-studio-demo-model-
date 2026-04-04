@@ -22,6 +22,9 @@ services:
   # API service
   api:
     image: magic-studio/magic-studio-api:1.13.3
+    build:
+      context: ../api
+      dockerfile: Dockerfile
     restart: always
     environment:
       # Use the shared environment variables.
@@ -70,6 +73,9 @@ services:
   # The Celery worker for processing all queues (dataset, workflow, mail, etc.)
   worker:
     image: magic-studio/magic-studio-api:1.13.3
+    build:
+      context: ../api
+      dockerfile: Dockerfile
     restart: always
     environment:
       # Use the shared environment variables.
@@ -115,6 +121,9 @@ services:
   # Celery beat for scheduling periodic tasks.
   worker_beat:
     image: magic-studio/magic-studio-api:1.13.3
+    build:
+      context: ../api
+      dockerfile: Dockerfile
     restart: always
     environment:
       # Use the shared environment variables.
@@ -151,6 +160,9 @@ services:
   # Frontend web application.
   web:
     image: magic-studio/magic-studio-web:1.13.3
+    build:
+      context: ..
+      dockerfile: web/Dockerfile
     restart: always
     environment:
       CONSOLE_API_URL: ${CONSOLE_API_URL:-}
