@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 import Button from '@/app/components/base/button'
 import Modal from '@/app/components/base/modal'
 import Tag from '@/app/components/base/tag'
-import { useDocLink } from '@/context/i18n'
+import { BRAND_REPO_URL } from '@/constants/brand'
 import { AppModeEnum } from '@/types/app'
 
 type IShareLinkProps = {
@@ -41,9 +41,7 @@ const CustomizeModal: FC<IShareLinkProps> = ({
   mode,
 }) => {
   const { t } = useTranslation()
-  const docLink = useDocLink()
-  const isChatApp = mode === AppModeEnum.CHAT || mode === AppModeEnum.ADVANCED_CHAT
-
+  void mode
   return (
     <Modal
       title={t(`${prefixCustomize}.title`, { ns: 'appOverview' })}
@@ -65,7 +63,7 @@ const CustomizeModal: FC<IShareLinkProps> = ({
           <div className="flex flex-col">
             <div className="text-text-primary">{t(`${prefixCustomize}.way1.step1`, { ns: 'appOverview' })}</div>
             <div className="mb-2 mt-1 text-xs text-text-tertiary">{t(`${prefixCustomize}.way1.step1Tip`, { ns: 'appOverview' })}</div>
-            <a href={`https://github.com/langgenius/${isChatApp ? 'webapp-conversation' : 'webapp-text-generator'}`} target="_blank" rel="noopener noreferrer">
+            <a href={BRAND_REPO_URL} target="_blank" rel="noopener noreferrer">
               <Button>
                 <GithubIcon className="mr-2 text-text-secondary" />
                 {t(`${prefixCustomize}.way1.step1Operation`, { ns: 'appOverview' })}
@@ -78,7 +76,7 @@ const CustomizeModal: FC<IShareLinkProps> = ({
           <div className="flex flex-col">
             <div className="text-text-primary">{t(`${prefixCustomize}.way1.step2`, { ns: 'appOverview' })}</div>
             <div className="mb-2 mt-1 text-xs text-text-tertiary">{t(`${prefixCustomize}.way1.step2Tip`, { ns: 'appOverview' })}</div>
-            <a href="https://vercel.com/docs/concepts/deployments/git/vercel-for-github" target="_blank" rel="noopener noreferrer">
+            <a href={BRAND_REPO_URL} target="_blank" rel="noopener noreferrer">
               <Button>
                 <div className="mr-1.5 border-b-12 border-l-[7px] border-r-[7px] border-t-0 border-solid border-text-primary border-l-transparent border-r-transparent border-t-transparent"></div>
                 <span>{t(`${prefixCustomize}.way1.step2Operation`, { ns: 'appOverview' })}</span>
@@ -97,7 +95,7 @@ const CustomizeModal: FC<IShareLinkProps> = ({
               {' '}
               <br />
               NEXT_PUBLIC_APP_KEY=
-              {'\'<Web API Key From Dify>\''}
+              {'\'<Magic Studio Web API Key>\''}
               {' '}
               <br />
               NEXT_PUBLIC_API_URL=
@@ -116,11 +114,7 @@ const CustomizeModal: FC<IShareLinkProps> = ({
         <p className="system-sm-medium my-2 text-text-secondary">{t(`${prefixCustomize}.way2.name`, { ns: 'appOverview' })}</p>
         <Button
           className="mt-2"
-          onClick={() =>
-            window.open(
-              docLink('/use-dify/publish/developing-with-apis'),
-              '_blank',
-            )}
+          onClick={() => window.open(BRAND_REPO_URL, '_blank')}
         >
           <span className="text-sm text-text-secondary">{t(`${prefixCustomize}.way2.operation`, { ns: 'appOverview' })}</span>
           <ArrowTopRightOnSquareIcon className="ml-1 h-4 w-4 shrink-0 text-text-secondary" />

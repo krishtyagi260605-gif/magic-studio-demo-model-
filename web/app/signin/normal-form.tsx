@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { toast } from '@/app/components/base/ui/toast'
 import { IS_CE_EDITION } from '@/config'
+import { BRAND_PRIVACY_URL, BRAND_TERMS_URL } from '@/constants/brand'
 import { useGlobalPublicStore } from '@/context/global-public-context'
 import Link from '@/next/link'
 import { useRouter, useSearchParams } from '@/next/navigation'
@@ -156,12 +157,15 @@ const NormalForm = () => {
             )
           : (
               <div className="mx-auto w-full">
+                <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#bde7ff]">
+                  Magic Studio
+                </div>
                 <h2 className="text-text-primary title-4xl-semi-bold">{systemFeatures.branding.enabled ? t('pageTitleForE', { ns: 'login' }) : t('pageTitle', { ns: 'login' })}</h2>
                 <p className="mt-2 text-text-tertiary body-md-regular">{t('welcome', { ns: 'login' })}</p>
               </div>
             )}
-        <div className="relative">
-          <div className="mt-6 flex flex-col gap-3">
+        <div className="relative mt-6 rounded-[28px] border border-white/8 bg-white/4 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.32)] backdrop-blur-xl">
+          <div className="flex flex-col gap-3">
             {systemFeatures.enable_social_oauth_login && <SocialAuth />}
             {systemFeatures.sso_enforced_for_signin && (
               <div className="w-full">
@@ -243,7 +247,7 @@ const NormalForm = () => {
                   className="text-text-secondary system-xs-medium hover:underline"
                   target="_blank"
                   rel="noopener noreferrer"
-                  href="https://dify.ai/terms"
+                  href={BRAND_TERMS_URL}
                 >
                   {t('tos', { ns: 'login' })}
                 </Link>
@@ -252,7 +256,7 @@ const NormalForm = () => {
                   className="text-text-secondary system-xs-medium hover:underline"
                   target="_blank"
                   rel="noopener noreferrer"
-                  href="https://dify.ai/privacy"
+                  href={BRAND_PRIVACY_URL}
                 >
                   {t('pp', { ns: 'login' })}
                 </Link>

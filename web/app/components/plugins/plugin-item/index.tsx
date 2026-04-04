@@ -66,13 +66,13 @@ const PluginItem: FC<Props> = ({
     return [PluginSource.github, PluginSource.marketplace].includes(source) ? author : ''
   }, [source, author])
 
-  const { langGeniusVersionInfo } = useAppContext()
+  const { magicStudioVersionInfo } = useAppContext()
 
   const isDifyVersionCompatible = useMemo(() => {
-    if (!langGeniusVersionInfo.current_version)
+    if (!magicStudioVersionInfo.current_version)
       return true
-    return isEqualOrLaterThanVersion(langGeniusVersionInfo.current_version, declarationMeta.minimum_dify_version ?? '0.0.0')
-  }, [declarationMeta.minimum_dify_version, langGeniusVersionInfo.current_version])
+    return isEqualOrLaterThanVersion(magicStudioVersionInfo.current_version, declarationMeta.minimum_dify_version ?? '0.0.0')
+  }, [declarationMeta.minimum_dify_version, magicStudioVersionInfo.current_version])
 
   const isDeprecated = useMemo(() => {
     return status === 'deleted' && !!deprecated_reason

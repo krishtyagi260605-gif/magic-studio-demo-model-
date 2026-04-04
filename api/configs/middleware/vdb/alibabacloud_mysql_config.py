@@ -28,8 +28,8 @@ class AlibabaCloudMySQLConfig(BaseSettings):
     )
 
     ALIBABACLOUD_MYSQL_DATABASE: str = Field(
-        description="Name of the AlibabaCloud MySQL database to connect to (default is 'dify')",
-        default="dify",
+        description="Name of the AlibabaCloud MySQL database to connect to (default is 'magic studio')",
+        default="magic studio",
     )
 
     ALIBABACLOUD_MYSQL_MAX_CONNECTION: PositiveInt = Field(

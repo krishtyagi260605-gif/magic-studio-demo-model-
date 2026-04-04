@@ -27,9 +27,9 @@ def init_app(app: MagicStudioApp) -> None:
         redoc_url=redoc_url,
         openapi_url=openapi_url,
         openapi_version="3.0.0",
-        title="Dify API (FastOpenAPI PoC)",
+        title="Magic Studio API (FastOpenAPI PoC)",
         version="1.0",
-        description="FastOpenAPI proof of concept for Dify API",
+        description="FastOpenAPI proof of concept for Magic Studio API",
     )
 
     # Ensure route decorators are evaluated.

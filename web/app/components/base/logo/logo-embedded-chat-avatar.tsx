@@ -1,19 +1,15 @@
 import type { FC } from 'react'
-import { basePath } from '@/utils/var'
+import { cn } from '@/utils/classnames'
+import MagicGlyph from './magic-glyph'
 
 type LogoEmbeddedChatAvatarProps = {
   className?: string
 }
+
 const LogoEmbeddedChatAvatar: FC<LogoEmbeddedChatAvatarProps> = ({
   className,
 }) => {
-  return (
-    <img
-      src={`${basePath}/logo/logo-embedded-chat-avatar.png`}
-      className={`block h-10 w-10 ${className}`}
-      alt="logo"
-    />
-  )
+  return <MagicGlyph className={cn('h-10 w-10', className)} />
 }
 
 export default LogoEmbeddedChatAvatar

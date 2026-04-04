@@ -1,3 +1,3 @@
-from core.workflow.node_factory import DifyNodeFactory
+from core.workflow.node_factory import MagicStudioNodeFactory
 
-__all__ = ["DifyNodeFactory"]
+__all__ = ["MagicStudioNodeFactory"]

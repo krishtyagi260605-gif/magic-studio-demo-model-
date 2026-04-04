@@ -121,7 +121,7 @@ Access the app at [http://localhost:3000](http://localhost:3000).
 | `MAGIC_STUDIO_BIND_ADDRESS` | `0.0.0.0` | API bind address |
 | `MAGIC_STUDIO_PORT` | `5001` | API port |
 | `DB_HOST` | `localhost` | PostgreSQL host |
-| `DB_DATABASE` | `dify` | Database name |
+| `DB_DATABASE` | `magic-studio` | Database name |
 | `REDIS_HOST` | `localhost` | Redis host |
 | `VECTOR_STORE` | `weaviate` | Vector database type |
 

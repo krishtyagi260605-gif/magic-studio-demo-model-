@@ -1,27 +1,27 @@
 'use client'
-import type { LangGeniusVersionResponse } from '@/models/common'
+import type { MagicStudioVersionResponse } from '@/models/common'
 import { RiCloseLine } from '@remixicon/react'
-import dayjs from 'dayjs'
 import { useTranslation } from 'react-i18next'
 import Button from '@/app/components/base/button'
-import DifyLogo from '@/app/components/base/logo/dify-logo'
+import MagicStudioLogo from '@/app/components/base/logo/magic-studio-logo'
 import Modal from '@/app/components/base/modal'
 import { IS_CE_EDITION } from '@/config'
+import { BRAND_LICENSE_URL, BRAND_OWNER, BRAND_PRIVACY_URL, BRAND_TERMS_URL, BRAND_UPDATES_URL } from '@/constants/brand'
 import { useGlobalPublicStore } from '@/context/global-public-context'
 
 import Link from '@/next/link'
 
 type IAccountSettingProps = {
-  langGeniusVersionInfo: LangGeniusVersionResponse
+  magicStudioVersionInfo: MagicStudioVersionResponse
   onCancel: () => void
 }
 
 export default function AccountAbout({
-  langGeniusVersionInfo,
+  magicStudioVersionInfo,
   onCancel,
 }: IAccountSettingProps) {
   const { t } = useTranslation()
-  const isLatest = langGeniusVersionInfo.current_version === langGeniusVersionInfo.latest_version
+  const isLatest = magicStudioVersionInfo.current_version === magicStudioVersionInfo.latest_version
   const systemFeatures = useGlobalPublicStore(s => s.systemFeatures)
 
   return (
@@ -43,25 +43,29 @@ export default function AccountAbout({
                   alt="logo"
                 />
               )
-            : <DifyLogo size="large" className="mx-auto" />}
+            : <MagicStudioLogo size="large" className="mx-auto" />}
 
           <div className="text-center text-xs font-normal text-text-tertiary">
             Version
-            {langGeniusVersionInfo?.current_version}
+            {magicStudioVersionInfo?.current_version}
           </div>
           <div className="flex flex-col items-center gap-2 text-center text-xs font-normal text-text-secondary">
             <div>
-              © 2026 Krish Tyagi — Magic Studio
+              © 2026
+              {' '}
+              {BRAND_OWNER}
+              {' '}
+              — Magic Studio
             </div>
             <div className="text-text-accent">
               {
                 IS_CE_EDITION
-                  ? <Link href="https://github.com/langgenius/dify/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT License</Link>
+                  ? <Link href={BRAND_LICENSE_URL} target="_blank" rel="noopener noreferrer">MIT License</Link>
                   : (
                       <>
-                        <Link href="https://dify.ai/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</Link>
+                        <Link href={BRAND_PRIVACY_URL} target="_blank" rel="noopener noreferrer">Privacy Policy</Link>
                         ,&nbsp;
-                        <Link href="https://dify.ai/terms" target="_blank" rel="noopener noreferrer">Terms of Service</Link>
+                        <Link href={BRAND_TERMS_URL} target="_blank" rel="noopener noreferrer">Terms of Service</Link>
                       </>
                     )
               }
@@ -73,14 +77,14 @@ export default function AccountAbout({
           <div className="text-xs font-medium text-text-tertiary">
             {
               isLatest
-                ? t('about.latestAvailable', { ns: 'common', version: langGeniusVersionInfo.latest_version })
-                : t('about.nowAvailable', { ns: 'common', version: langGeniusVersionInfo.latest_version })
+                ? t('about.latestAvailable', { ns: 'common', version: magicStudioVersionInfo.latest_version })
+                : t('about.nowAvailable', { ns: 'common', version: magicStudioVersionInfo.latest_version })
             }
           </div>
           <div className="flex items-center">
             <Button className="mr-2" size="small">
               <Link
-                href="#"
+                href={BRAND_UPDATES_URL}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -91,7 +95,7 @@ export default function AccountAbout({
               !isLatest && !IS_CE_EDITION && (
                 <Button variant="primary" size="small">
                   <Link
-                    href={langGeniusVersionInfo.release_notes}
+                    href={magicStudioVersionInfo.release_notes}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

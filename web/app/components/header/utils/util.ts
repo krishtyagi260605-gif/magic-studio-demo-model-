@@ -1,3 +1,5 @@
+import { BRAND_CONTACT_EMAIL } from '@/constants/brand'
+
 export const generateMailToLink = (email: string, subject?: string, body?: string): string => {
   let mailtoLink = `mailto:${email}`
 
@@ -21,5 +23,5 @@ export const mailToSupport = (account: string, plan: string, version: string, su
     Platform:
     Problem Description:
   `
-  return generateMailToLink(supportEmailAddress || 'support@dify.ai', subject, body)
+  return generateMailToLink(supportEmailAddress || BRAND_CONTACT_EMAIL, subject, body)
 }

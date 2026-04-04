@@ -305,7 +305,7 @@ describe('CustomizeModal', () => {
       // Assert
       expect(mockWindowOpen).toHaveBeenCalledTimes(1)
       expect(mockWindowOpen).toHaveBeenCalledWith(
-        expect.stringContaining('/use-dify/publish/developing-with-apis'),
+        expect.stringContaining('/magic-studio/publish/developing-with-apis'),
         '_blank',
       )
     })

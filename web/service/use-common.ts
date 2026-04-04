@@ -13,7 +13,7 @@ import type {
   FileUploadConfigResponse,
   ICurrentWorkspace,
   IWorkspace,
-  LangGeniusVersionResponse,
+  MagicStudioVersionResponse,
   Member,
   PluginProvider,
   StructuredOutputRulesRequestBody,
@@ -54,7 +54,7 @@ export const commonQueryKeys = {
   ] as const,
   notionBinding: (code?: string | null) => [NAME_SPACE, 'notion-binding', code] as const,
   modelParameterRules: (provider?: string, model?: string) => [NAME_SPACE, 'model-parameter-rules', provider, model] as const,
-  langGeniusVersion: (currentVersion?: string | null) => [NAME_SPACE, 'langgenius-version', currentVersion] as const,
+  magicStudioVersion: (currentVersion?: string | null) => [NAME_SPACE, 'magic-studio-version', currentVersion] as const,
   forgotPasswordValidity: (token?: string | null) => [NAME_SPACE, 'forgot-password-validity', token] as const,
   dataSourceIntegrates: [NAME_SPACE, 'data-source-integrates'] as const,
 }
@@ -95,10 +95,10 @@ export const useUserProfile = () => {
   })
 }
 
-export const useLangGeniusVersion = (currentVersion?: string | null, enabled?: boolean) => {
-  return useQuery<LangGeniusVersionResponse>({
-    queryKey: commonQueryKeys.langGeniusVersion(currentVersion || undefined),
-    queryFn: () => get<LangGeniusVersionResponse>('/version', { params: { current_version: currentVersion } }),
+export const useMagicStudioVersion = (currentVersion?: string | null, enabled?: boolean) => {
+  return useQuery<MagicStudioVersionResponse>({
+    queryKey: commonQueryKeys.magicStudioVersion(currentVersion || undefined),
+    queryFn: () => get<MagicStudioVersionResponse>('/version', { params: { current_version: currentVersion } }),
     enabled: !!currentVersion && (enabled ?? true),
   })
 }

@@ -3,6 +3,7 @@ import type { FC } from 'react'
 import type { Category } from './types'
 import * as React from 'react'
 import { useState } from 'react'
+import { BRAND_REPO_URL } from '@/constants/brand'
 import { Dialog, DialogContent } from '@/app/components/base/ui/dialog'
 import {
   ScrollAreaContent,
@@ -46,9 +47,7 @@ const Pricing: FC<PricingProps> = ({
   const canPay = isCurrentWorkspaceManager
 
   const pricingPageLanguage = useGetPricingPageLanguage()
-  const pricingPageURL = pricingPageLanguage
-    ? `https://dify.ai/${pricingPageLanguage}/pricing#plans-and-features`
-    : 'https://dify.ai/pricing#plans-and-features'
+  const pricingPageURL = BRAND_REPO_URL
 
   return (
     <Dialog

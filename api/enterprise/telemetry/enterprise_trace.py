@@ -8,7 +8,7 @@ Signal strategy:
 - **Metrics + structured logs**: all other event types.
 
 Token metric labels (unified structure):
-All token metrics (dify.tokens.input, dify.tokens.output, dify.tokens.total) use the
+All token metrics (magicstudio.tokens.input, magicstudio.tokens.output, magicstudio.tokens.total) use the
 same label set for consistent filtering and aggregation:
 - tenant_id: Tenant identifier
 - app_id: Application identifier
@@ -104,13 +104,13 @@ class EnterpriseOtelTrace:
         metadata = self._metadata(trace_info)
         tenant_id, app_id, user_id = self._context_ids(trace_info, metadata)
         return {
-            "dify.trace_id": trace_info.resolved_trace_id,
-            "dify.tenant_id": tenant_id,
-            "dify.app_id": app_id,
-            "dify.app.name": metadata.get("app_name"),
-            "dify.workspace.name": metadata.get("workspace_name"),
+            "magicstudio.trace_id": trace_info.resolved_trace_id,
+            "magicstudio.tenant_id": tenant_id,
+            "magicstudio.app_id": app_id,
+            "magicstudio.app.name": metadata.get("app_name"),
+            "magicstudio.workspace.name": metadata.get("workspace_name"),
             "gen_ai.user.id": user_id,
-            "dify.message.id": trace_info.message_id,
+            "magicstudio.message.id": trace_info.message_id,
         }
 
     def _metadata(self, trace_info: BaseTraceInfo) -> dict[str, Any]:
@@ -165,18 +165,18 @@ class EnterpriseOtelTrace:
         tenant_id, app_id, user_id = self._context_ids(info, metadata)
         # -- Span attrs: identity + structure + status + timing + gen_ai scalars --
         span_attrs: dict[str, Any] = {
-            "dify.trace_id": info.resolved_trace_id,
-            "dify.tenant_id": tenant_id,
-            "dify.app_id": app_id,
-            "dify.workflow.id": info.workflow_id,
-            "dify.workflow.run_id": info.workflow_run_id,
-            "dify.workflow.status": info.workflow_run_status,
-            "dify.workflow.error": info.error,
-            "dify.workflow.elapsed_time": info.workflow_run_elapsed_time,
-            "dify.invoke_from": metadata.get("triggered_from"),
-            "dify.conversation.id": info.conversation_id,
-            "dify.message.id": info.message_id,
-            "dify.invoked_by": info.invoked_by,
+            "magicstudio.trace_id": info.resolved_trace_id,
+            "magicstudio.tenant_id": tenant_id,
+            "magicstudio.app_id": app_id,
+            "magicstudio.workflow.id": info.workflow_id,
+            "magicstudio.workflow.run_id": info.workflow_run_id,
+            "magicstudio.workflow.status": info.workflow_run_status,
+            "magicstudio.workflow.error": info.error,
+            "magicstudio.workflow.elapsed_time": info.workflow_run_elapsed_time,
+            "magicstudio.invoke_from": metadata.get("triggered_from"),
+            "magicstudio.conversation.id": info.conversation_id,
+            "magicstudio.message.id": info.message_id,
+            "magicstudio.invoked_by": info.invoked_by,
             "gen_ai.usage.total_tokens": info.total_tokens,
             "gen_ai.user.id": user_id,
         }
@@ -186,10 +186,10 @@ class EnterpriseOtelTrace:
         parent_ctx = metadata.get("parent_trace_context")
         if isinstance(parent_ctx, dict):
             parent_ctx_dict = cast(dict[str, Any], parent_ctx)
-            span_attrs["dify.parent.trace_id"] = parent_ctx_dict.get("trace_id")
-            span_attrs["dify.parent.node.execution_id"] = parent_ctx_dict.get("parent_node_execution_id")
-            span_attrs["dify.parent.workflow.run_id"] = parent_ctx_dict.get("parent_workflow_run_id")
-            span_attrs["dify.parent.app.id"] = parent_ctx_dict.get("parent_app_id")
+            span_attrs["magicstudio.parent.trace_id"] = parent_ctx_dict.get("trace_id")
+            span_attrs["magicstudio.parent.node.execution_id"] = parent_ctx_dict.get("parent_node_execution_id")
+            span_attrs["magicstudio.parent.workflow.run_id"] = parent_ctx_dict.get("parent_workflow_run_id")
+            span_attrs["magicstudio.parent.app.id"] = parent_ctx_dict.get("parent_app_id")
 
         self._exporter.export_span(
             EnterpriseTelemetrySpan.WORKFLOW_RUN,
@@ -206,18 +206,18 @@ class EnterpriseOtelTrace:
         log_attrs: dict[str, Any] = {**span_attrs}
         log_attrs.update(
             {
-                "dify.app.name": metadata.get("app_name"),
-                "dify.workspace.name": metadata.get("workspace_name"),
+                "magicstudio.app.name": metadata.get("app_name"),
+                "magicstudio.workspace.name": metadata.get("workspace_name"),
                 "gen_ai.user.id": user_id,
                 "gen_ai.usage.total_tokens": info.total_tokens,
-                "dify.workflow.version": info.workflow_run_version,
+                "magicstudio.workflow.version": info.workflow_run_version,
             }
         )
 
         ref = f"ref:workflow_run_id={info.workflow_run_id}"
-        log_attrs["dify.workflow.inputs"] = self._content_or_ref(info.workflow_run_inputs, ref)
-        log_attrs["dify.workflow.outputs"] = self._content_or_ref(info.workflow_run_outputs, ref)
-        log_attrs["dify.workflow.query"] = self._content_or_ref(info.query, ref)
+        log_attrs["magicstudio.workflow.inputs"] = self._content_or_ref(info.workflow_run_inputs, ref)
+        log_attrs["magicstudio.workflow.outputs"] = self._content_or_ref(info.workflow_run_outputs, ref)
+        log_attrs["magicstudio.workflow.query"] = self._content_or_ref(info.query, ref)
 
         emit_telemetry_log(
             event_name=EnterpriseTelemetryEvent.WORKFLOW_RUN,
@@ -312,26 +312,26 @@ class EnterpriseOtelTrace:
         tenant_id, app_id, user_id = self._context_ids(info, metadata)
         # -- Span attrs: identity + structure + status + timing + gen_ai scalars --
         span_attrs: dict[str, Any] = {
-            "dify.trace_id": info.resolved_trace_id,
-            "dify.tenant_id": tenant_id,
-            "dify.app_id": app_id,
-            "dify.workflow.id": info.workflow_id,
-            "dify.workflow.run_id": info.workflow_run_id,
-            "dify.message.id": info.message_id,
-            "dify.conversation.id": metadata.get("conversation_id"),
-            "dify.node.execution_id": info.node_execution_id,
-            "dify.node.id": info.node_id,
-            "dify.node.type": info.node_type,
-            "dify.node.title": info.title,
-            "dify.node.status": info.status,
-            "dify.node.error": info.error,
-            "dify.node.elapsed_time": info.elapsed_time,
-            "dify.node.index": info.index,
-            "dify.node.predecessor_node_id": info.predecessor_node_id,
-            "dify.node.iteration_id": info.iteration_id,
-            "dify.node.loop_id": info.loop_id,
-            "dify.node.parallel_id": info.parallel_id,
-            "dify.node.invoked_by": info.invoked_by,
+            "magicstudio.trace_id": info.resolved_trace_id,
+            "magicstudio.tenant_id": tenant_id,
+            "magicstudio.app_id": app_id,
+            "magicstudio.workflow.id": info.workflow_id,
+            "magicstudio.workflow.run_id": info.workflow_run_id,
+            "magicstudio.message.id": info.message_id,
+            "magicstudio.conversation.id": metadata.get("conversation_id"),
+            "magicstudio.node.execution_id": info.node_execution_id,
+            "magicstudio.node.id": info.node_id,
+            "magicstudio.node.type": info.node_type,
+            "magicstudio.node.title": info.title,
+            "magicstudio.node.status": info.status,
+            "magicstudio.node.error": info.error,
+            "magicstudio.node.elapsed_time": info.elapsed_time,
+            "magicstudio.node.index": info.index,
+            "magicstudio.node.predecessor_node_id": info.predecessor_node_id,
+            "magicstudio.node.iteration_id": info.iteration_id,
+            "magicstudio.node.loop_id": info.loop_id,
+            "magicstudio.node.parallel_id": info.parallel_id,
+            "magicstudio.node.invoked_by": info.invoked_by,
             "gen_ai.usage.input_tokens": info.prompt_tokens,
             "gen_ai.usage.output_tokens": info.completion_tokens,
             "gen_ai.usage.total_tokens": info.total_tokens,
@@ -358,30 +358,30 @@ class EnterpriseOtelTrace:
         log_attrs: dict[str, Any] = {**span_attrs}
         log_attrs.update(
             {
-                "dify.app.name": metadata.get("app_name"),
-                "dify.workspace.name": metadata.get("workspace_name"),
-                "dify.invoke_from": metadata.get("invoke_from"),
+                "magicstudio.app.name": metadata.get("app_name"),
+                "magicstudio.workspace.name": metadata.get("workspace_name"),
+                "magicstudio.invoke_from": metadata.get("invoke_from"),
                 "gen_ai.user.id": user_id,
                 "gen_ai.usage.total_tokens": info.total_tokens,
-                "dify.node.total_price": info.total_price,
-                "dify.node.currency": info.currency,
+                "magicstudio.node.total_price": info.total_price,
+                "magicstudio.node.currency": info.currency,
                 "gen_ai.provider.name": info.model_provider,
                 "gen_ai.request.model": info.model_name,
                 "gen_ai.tool.name": info.tool_name,
-                "dify.node.iteration_index": info.iteration_index,
-                "dify.node.loop_index": info.loop_index,
-                "dify.plugin.name": metadata.get("plugin_name"),
-                "dify.credential.name": metadata.get("credential_name"),
-                "dify.credential.id": metadata.get("credential_id"),
-                "dify.dataset.ids": self._maybe_json(metadata.get("dataset_ids")),
-                "dify.dataset.names": self._maybe_json(metadata.get("dataset_names")),
+                "magicstudio.node.iteration_index": info.iteration_index,
+                "magicstudio.node.loop_index": info.loop_index,
+                "magicstudio.plugin.name": metadata.get("plugin_name"),
+                "magicstudio.credential.name": metadata.get("credential_name"),
+                "magicstudio.credential.id": metadata.get("credential_id"),
+                "magicstudio.dataset.ids": self._maybe_json(metadata.get("dataset_ids")),
+                "magicstudio.dataset.names": self._maybe_json(metadata.get("dataset_names")),
             }
         )
 
         ref = f"ref:node_execution_id={info.node_execution_id}"
-        log_attrs["dify.node.inputs"] = self._content_or_ref(info.node_inputs, ref)
-        log_attrs["dify.node.outputs"] = self._content_or_ref(info.node_outputs, ref)
-        log_attrs["dify.node.process_data"] = self._content_or_ref(info.process_data, ref)
+        log_attrs["magicstudio.node.inputs"] = self._content_or_ref(info.node_inputs, ref)
+        log_attrs["magicstudio.node.outputs"] = self._content_or_ref(info.node_outputs, ref)
+        log_attrs["magicstudio.node.process_data"] = self._content_or_ref(info.process_data, ref)
 
         emit_telemetry_log(
             event_name=span_name.value,
@@ -456,38 +456,38 @@ class EnterpriseOtelTrace:
         attrs = self._common_attrs(info)
         attrs.update(
             {
-                "dify.invoke_from": metadata.get("from_source"),
-                "dify.conversation.id": metadata.get("conversation_id"),
-                "dify.conversation.mode": info.conversation_mode,
+                "magicstudio.invoke_from": metadata.get("from_source"),
+                "magicstudio.conversation.id": metadata.get("conversation_id"),
+                "magicstudio.conversation.mode": info.conversation_mode,
                 "gen_ai.provider.name": metadata.get("ls_provider"),
                 "gen_ai.request.model": metadata.get("ls_model_name"),
                 "gen_ai.usage.input_tokens": info.message_tokens,
                 "gen_ai.usage.output_tokens": info.answer_tokens,
                 "gen_ai.usage.total_tokens": info.total_tokens,
-                "dify.message.status": metadata.get("status"),
-                "dify.message.error": info.error,
-                "dify.message.from_source": metadata.get("from_source"),
-                "dify.message.from_end_user_id": metadata.get("from_end_user_id"),
-                "dify.message.from_account_id": metadata.get("from_account_id"),
-                "dify.streaming": info.is_streaming_request,
-                "dify.message.time_to_first_token": info.gen_ai_server_time_to_first_token,
-                "dify.message.streaming_duration": info.llm_streaming_time_to_generate,
-                "dify.workflow.run_id": metadata.get("workflow_run_id"),
+                "magicstudio.message.status": metadata.get("status"),
+                "magicstudio.message.error": info.error,
+                "magicstudio.message.from_source": metadata.get("from_source"),
+                "magicstudio.message.from_end_user_id": metadata.get("from_end_user_id"),
+                "magicstudio.message.from_account_id": metadata.get("from_account_id"),
+                "magicstudio.streaming": info.is_streaming_request,
+                "magicstudio.message.time_to_first_token": info.gen_ai_server_time_to_first_token,
+                "magicstudio.message.streaming_duration": info.llm_streaming_time_to_generate,
+                "magicstudio.workflow.run_id": metadata.get("workflow_run_id"),
             }
         )
 
         if info.start_time and info.end_time:
-            attrs["dify.message.duration"] = (info.end_time - info.start_time).total_seconds()
+            attrs["magicstudio.message.duration"] = (info.end_time - info.start_time).total_seconds()
 
         node_execution_id = metadata.get("node_execution_id")
         if node_execution_id:
-            attrs["dify.node.execution_id"] = node_execution_id
+            attrs["magicstudio.node.execution_id"] = node_execution_id
 
         ref = f"ref:message_id={info.message_id}"
         inputs = self._safe_payload_value(info.inputs)
         outputs = self._safe_payload_value(info.outputs)
-        attrs["dify.message.inputs"] = self._content_or_ref(inputs, ref)
-        attrs["dify.message.outputs"] = self._content_or_ref(outputs, ref)
+        attrs["magicstudio.message.inputs"] = self._content_or_ref(inputs, ref)
+        attrs["magicstudio.message.outputs"] = self._content_or_ref(outputs, ref)
 
         emit_metric_only_event(
             event_name=EnterpriseTelemetryEvent.MESSAGE_RUN,
@@ -554,22 +554,22 @@ class EnterpriseOtelTrace:
         attrs = self._common_attrs(info)
         attrs.update(
             {
-                "dify.tool.name": info.tool_name,
-                "dify.tool.duration": float(info.time_cost),
-                "dify.tool.status": "failed" if info.error else "succeeded",
-                "dify.tool.error": info.error,
-                "dify.workflow.run_id": metadata.get("workflow_run_id"),
+                "magicstudio.tool.name": info.tool_name,
+                "magicstudio.tool.duration": float(info.time_cost),
+                "magicstudio.tool.status": "failed" if info.error else "succeeded",
+                "magicstudio.tool.error": info.error,
+                "magicstudio.workflow.run_id": metadata.get("workflow_run_id"),
             }
         )
         node_execution_id = metadata.get("node_execution_id")
         if node_execution_id:
-            attrs["dify.node.execution_id"] = node_execution_id
+            attrs["magicstudio.node.execution_id"] = node_execution_id
 
         ref = f"ref:message_id={info.message_id}"
-        attrs["dify.tool.inputs"] = self._content_or_ref(info.tool_inputs, ref)
-        attrs["dify.tool.outputs"] = self._content_or_ref(info.tool_outputs, ref)
-        attrs["dify.tool.parameters"] = self._content_or_ref(info.tool_parameters, ref)
-        attrs["dify.tool.config"] = self._content_or_ref(info.tool_config, ref)
+        attrs["magicstudio.tool.inputs"] = self._content_or_ref(info.tool_inputs, ref)
+        attrs["magicstudio.tool.outputs"] = self._content_or_ref(info.tool_outputs, ref)
+        attrs["magicstudio.tool.parameters"] = self._content_or_ref(info.tool_parameters, ref)
+        attrs["magicstudio.tool.config"] = self._content_or_ref(info.tool_config, ref)
 
         emit_metric_only_event(
             event_name=EnterpriseTelemetryEvent.TOOL_EXECUTION,
@@ -611,19 +611,19 @@ class EnterpriseOtelTrace:
         attrs = self._common_attrs(info)
         attrs.update(
             {
-                "dify.moderation.flagged": info.flagged,
-                "dify.moderation.action": info.action,
-                "dify.moderation.preset_response": info.preset_response,
-                "dify.moderation.type": metadata.get("moderation_type", "input"),
-                "dify.moderation.categories": self._maybe_json(metadata.get("moderation_categories", [])),
-                "dify.workflow.run_id": metadata.get("workflow_run_id"),
+                "magicstudio.moderation.flagged": info.flagged,
+                "magicstudio.moderation.action": info.action,
+                "magicstudio.moderation.preset_response": info.preset_response,
+                "magicstudio.moderation.type": metadata.get("moderation_type", "input"),
+                "magicstudio.moderation.categories": self._maybe_json(metadata.get("moderation_categories", [])),
+                "magicstudio.workflow.run_id": metadata.get("workflow_run_id"),
             }
         )
         node_execution_id = metadata.get("node_execution_id")
         if node_execution_id:
-            attrs["dify.node.execution_id"] = node_execution_id
+            attrs["magicstudio.node.execution_id"] = node_execution_id
 
-        attrs["dify.moderation.query"] = self._content_or_ref(
+        attrs["magicstudio.moderation.query"] = self._content_or_ref(
             info.query,
             f"ref:message_id={info.message_id}",
         )
@@ -662,20 +662,20 @@ class EnterpriseOtelTrace:
         attrs.update(
             {
                 "gen_ai.usage.total_tokens": info.total_tokens,
-                "dify.suggested_question.status": status,
-                "dify.suggested_question.error": error,
-                "dify.suggested_question.duration": duration,
+                "magicstudio.suggested_question.status": status,
+                "magicstudio.suggested_question.error": error,
+                "magicstudio.suggested_question.duration": duration,
                 "gen_ai.provider.name": info.model_provider,
                 "gen_ai.request.model": info.model_id,
-                "dify.suggested_question.count": len(info.suggested_question),
-                "dify.workflow.run_id": metadata.get("workflow_run_id"),
+                "magicstudio.suggested_question.count": len(info.suggested_question),
+                "magicstudio.workflow.run_id": metadata.get("workflow_run_id"),
             }
         )
         node_execution_id = metadata.get("node_execution_id")
         if node_execution_id:
-            attrs["dify.node.execution_id"] = node_execution_id
+            attrs["magicstudio.node.execution_id"] = node_execution_id
 
-        attrs["dify.suggested_question.questions"] = self._content_or_ref(
+        attrs["magicstudio.suggested_question.questions"] = self._content_or_ref(
             info.suggested_question,
             f"ref:message_id={info.message_id}",
         )
@@ -708,14 +708,14 @@ class EnterpriseOtelTrace:
         metadata = self._metadata(info)
         tenant_id, app_id, user_id = self._context_ids(info, metadata)
         attrs = self._common_attrs(info)
-        attrs["dify.retrieval.error"] = info.error
-        attrs["dify.retrieval.status"] = "failed" if info.error else "succeeded"
+        attrs["magicstudio.retrieval.error"] = info.error
+        attrs["magicstudio.retrieval.status"] = "failed" if info.error else "succeeded"
         if info.start_time and info.end_time:
-            attrs["dify.retrieval.duration"] = (info.end_time - info.start_time).total_seconds()
-        attrs["dify.workflow.run_id"] = metadata.get("workflow_run_id")
+            attrs["magicstudio.retrieval.duration"] = (info.end_time - info.start_time).total_seconds()
+        attrs["magicstudio.workflow.run_id"] = metadata.get("workflow_run_id")
         node_execution_id = metadata.get("node_execution_id")
         if node_execution_id:
-            attrs["dify.node.execution_id"] = node_execution_id
+            attrs["magicstudio.node.execution_id"] = node_execution_id
 
         docs: list[dict[str, Any]] = []
         documents_any: Any = info.documents
@@ -745,9 +745,9 @@ class EnterpriseOtelTrace:
                 }
             )
 
-        attrs["dify.dataset.id"] = self._maybe_json(dataset_ids)
-        attrs["dify.dataset.name"] = self._maybe_json(dataset_names)
-        attrs["dify.retrieval.document_count"] = len(docs)
+        attrs["magicstudio.dataset.id"] = self._maybe_json(dataset_ids)
+        attrs["magicstudio.dataset.name"] = self._maybe_json(dataset_names)
+        attrs["magicstudio.retrieval.document_count"] = len(docs)
 
         embedding_models_raw: Any = metadata.get("embedding_models")
         embedding_models: dict[str, Any] = (
@@ -765,20 +765,20 @@ class EnterpriseOtelTrace:
                         providers.append(p)
                     if m and m not in models:
                         models.append(m)
-            attrs["dify.dataset.embedding_providers"] = self._maybe_json(providers)
-            attrs["dify.dataset.embedding_models"] = self._maybe_json(models)
+            attrs["magicstudio.dataset.embedding_providers"] = self._maybe_json(providers)
+            attrs["magicstudio.dataset.embedding_models"] = self._maybe_json(models)
 
         # Add rerank model to logs
         rerank_provider = metadata.get("rerank_model_provider", "")
         rerank_model = metadata.get("rerank_model_name", "")
         if rerank_provider or rerank_model:
-            attrs["dify.retrieval.rerank_provider"] = rerank_provider
-            attrs["dify.retrieval.rerank_model"] = rerank_model
+            attrs["magicstudio.retrieval.rerank_provider"] = rerank_provider
+            attrs["magicstudio.retrieval.rerank_model"] = rerank_model
 
         ref = f"ref:message_id={info.message_id}"
         retrieval_inputs = self._safe_payload_value(info.inputs)
-        attrs["dify.retrieval.query"] = self._content_or_ref(retrieval_inputs, ref)
-        attrs["dify.dataset.documents"] = self._content_or_ref(structured_docs, ref)
+        attrs["magicstudio.retrieval.query"] = self._content_or_ref(retrieval_inputs, ref)
+        attrs["magicstudio.dataset.documents"] = self._content_or_ref(structured_docs, ref)
 
         emit_metric_only_event(
             event_name=EnterpriseTelemetryEvent.DATASET_RETRIEVAL,
@@ -829,25 +829,25 @@ class EnterpriseOtelTrace:
         metadata = self._metadata(info)
         tenant_id, app_id, user_id = self._context_ids(info, metadata)
         attrs = self._common_attrs(info)
-        attrs["dify.conversation.id"] = info.conversation_id
+        attrs["magicstudio.conversation.id"] = info.conversation_id
         node_execution_id = metadata.get("node_execution_id")
         if node_execution_id:
-            attrs["dify.node.execution_id"] = node_execution_id
+            attrs["magicstudio.node.execution_id"] = node_execution_id
 
         duration: float | None = None
         if info.start_time is not None and info.end_time is not None:
             duration = (info.end_time - info.start_time).total_seconds()
         error: str | None = metadata.get("error") if metadata else None
         status = "failed" if error else "succeeded"
-        attrs["dify.generate_name.duration"] = duration
-        attrs["dify.generate_name.status"] = status
-        attrs["dify.generate_name.error"] = error
+        attrs["magicstudio.generate_name.duration"] = duration
+        attrs["magicstudio.generate_name.status"] = status
+        attrs["magicstudio.generate_name.error"] = error
 
         ref = f"ref:conversation_id={info.conversation_id}"
         inputs = self._safe_payload_value(info.inputs)
         outputs = self._safe_payload_value(info.outputs)
-        attrs["dify.generate_name.inputs"] = self._content_or_ref(inputs, ref)
-        attrs["dify.generate_name.outputs"] = self._content_or_ref(outputs, ref)
+        attrs["magicstudio.generate_name.inputs"] = self._content_or_ref(inputs, ref)
+        attrs["magicstudio.generate_name.outputs"] = self._content_or_ref(outputs, ref)
 
         emit_metric_only_event(
             event_name=EnterpriseTelemetryEvent.GENERATE_NAME_EXECUTION,
@@ -875,34 +875,34 @@ class EnterpriseOtelTrace:
         metadata = self._metadata(info)
         tenant_id, app_id, user_id = self._context_ids(info, metadata)
         attrs = {
-            "dify.trace_id": info.resolved_trace_id,
-            "dify.tenant_id": tenant_id,
+            "magicstudio.trace_id": info.resolved_trace_id,
+            "magicstudio.tenant_id": tenant_id,
             "gen_ai.user.id": user_id,
-            "dify.app_id": app_id or "",
-            "dify.app.name": metadata.get("app_name"),
-            "dify.workspace.name": metadata.get("workspace_name"),
-            "dify.prompt_generation.operation_type": info.operation_type,
+            "magicstudio.app_id": app_id or "",
+            "magicstudio.app.name": metadata.get("app_name"),
+            "magicstudio.workspace.name": metadata.get("workspace_name"),
+            "magicstudio.prompt_generation.operation_type": info.operation_type,
             "gen_ai.provider.name": info.model_provider,
             "gen_ai.request.model": info.model_name,
             "gen_ai.usage.input_tokens": info.prompt_tokens,
             "gen_ai.usage.output_tokens": info.completion_tokens,
             "gen_ai.usage.total_tokens": info.total_tokens,
-            "dify.prompt_generation.duration": info.latency,
-            "dify.prompt_generation.status": "failed" if info.error else "succeeded",
-            "dify.prompt_generation.error": info.error,
+            "magicstudio.prompt_generation.duration": info.latency,
+            "magicstudio.prompt_generation.status": "failed" if info.error else "succeeded",
+            "magicstudio.prompt_generation.error": info.error,
         }
         node_execution_id = metadata.get("node_execution_id")
         if node_execution_id:
-            attrs["dify.node.execution_id"] = node_execution_id
+            attrs["magicstudio.node.execution_id"] = node_execution_id
 
         if info.total_price is not None:
-            attrs["dify.prompt_generation.total_price"] = info.total_price
-            attrs["dify.prompt_generation.currency"] = info.currency
+            attrs["magicstudio.prompt_generation.total_price"] = info.total_price
+            attrs["magicstudio.prompt_generation.currency"] = info.currency
 
         ref = f"ref:trace_id={info.trace_id}"
         outputs = self._safe_payload_value(info.outputs)
-        attrs["dify.prompt_generation.instruction"] = self._content_or_ref(info.instruction, ref)
-        attrs["dify.prompt_generation.output"] = self._content_or_ref(outputs, ref)
+        attrs["magicstudio.prompt_generation.instruction"] = self._content_or_ref(info.instruction, ref)
+        attrs["magicstudio.prompt_generation.output"] = self._content_or_ref(outputs, ref)
 
         emit_metric_only_event(
             event_name=EnterpriseTelemetryEvent.PROMPT_GENERATION_EXECUTION,

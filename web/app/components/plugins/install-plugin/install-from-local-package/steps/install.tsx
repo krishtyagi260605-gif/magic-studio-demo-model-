@@ -107,12 +107,12 @@ const Installed: FC<Props> = ({
     }
   }
 
-  const { langGeniusVersionInfo } = useAppContext()
+  const { magicStudioVersionInfo } = useAppContext()
   const isDifyVersionCompatible = useMemo(() => {
-    if (!langGeniusVersionInfo.current_version)
+    if (!magicStudioVersionInfo.current_version)
       return true
-    return isEqualOrLaterThanVersion(langGeniusVersionInfo.current_version, payload.meta.minimum_dify_version ?? '0.0.0')
-  }, [langGeniusVersionInfo.current_version, payload.meta.minimum_dify_version])
+    return isEqualOrLaterThanVersion(magicStudioVersionInfo.current_version, payload.meta.minimum_dify_version ?? '0.0.0')
+  }, [magicStudioVersionInfo.current_version, payload.meta.minimum_dify_version])
 
   return (
     <>

@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next'
 import { DropdownMenuGroup, DropdownMenuItem, DropdownMenuLinkItem, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger } from '@/app/components/base/ui/dropdown-menu'
 import { toggleZendeskWindow } from '@/app/components/base/zendesk/utils'
 import { Plan } from '@/app/components/billing/type'
+import { BRAND_CONTACT_MAILTO, BRAND_REPO_URL } from '@/constants/brand'
 import { SUPPORT_EMAIL_ADDRESS, ZENDESK_WIDGET_KEY } from '@/config'
 import { useAppContext } from '@/context/app-context'
 import { useProviderContext } from '@/context/provider-context'
@@ -16,7 +17,7 @@ type SupportProps = {
 export default function Support({ closeAccountDropdown }: SupportProps) {
   const { t } = useTranslation()
   const { plan } = useProviderContext()
-  const { userProfile, langGeniusVersionInfo } = useAppContext()
+  const { userProfile, magicStudioVersionInfo } = useAppContext()
   const hasDedicatedChannel = plan.type !== Plan.sandbox || Boolean(SUPPORT_EMAIL_ADDRESS.trim())
   const hasZendeskWidget = Boolean(ZENDESK_WIDGET_KEY.trim())
 
@@ -49,7 +50,7 @@ export default function Support({ closeAccountDropdown }: SupportProps) {
           {hasDedicatedChannel && !hasZendeskWidget && (
             <DropdownMenuLinkItem
               className="justify-between"
-              href={mailToSupport(userProfile.email, plan.type, langGeniusVersionInfo?.current_version, SUPPORT_EMAIL_ADDRESS)}
+              href={mailToSupport(userProfile.email, plan.type, magicStudioVersionInfo?.current_version, SUPPORT_EMAIL_ADDRESS)}
               rel="noopener noreferrer"
               target="_blank"
             >
@@ -62,24 +63,24 @@ export default function Support({ closeAccountDropdown }: SupportProps) {
           )}
           <DropdownMenuLinkItem
             className="justify-between"
-            href="https://forum.dify.ai/"
+            href={BRAND_REPO_URL}
             rel="noopener noreferrer"
             target="_blank"
           >
             <MenuItemContent
-              iconClassName="i-ri-discuss-line"
-              label={t('userProfile.forum', { ns: 'common' })}
+              iconClassName="i-ri-github-line"
+              label={t('userProfile.github', { ns: 'common' })}
               trailing={<ExternalLinkIndicator />}
             />
           </DropdownMenuLinkItem>
           <DropdownMenuLinkItem
             className="justify-between"
-            href="https://discord.gg/5AEfbxcd9k"
+            href={BRAND_CONTACT_MAILTO}
             rel="noopener noreferrer"
             target="_blank"
           >
             <MenuItemContent
-              iconClassName="i-ri-discord-line"
+              iconClassName="i-ri-mail-send-line"
               label={t('userProfile.community', { ns: 'common' })}
               trailing={<ExternalLinkIndicator />}
             />

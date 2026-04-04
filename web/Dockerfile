@@ -52,8 +52,8 @@ ENV EDITION=SELF_HOSTED
 ENV DEPLOY_ENV=PRODUCTION
 ENV CONSOLE_API_URL=http://127.0.0.1:5001
 ENV APP_API_URL=http://127.0.0.1:5001
-ENV MARKETPLACE_API_URL=https://marketplace.dify.ai
-ENV MARKETPLACE_URL=https://marketplace.dify.ai
+ENV MARKETPLACE_API_URL=https://marketplace.magicstudio.ai
+ENV MARKETPLACE_URL=https://marketplace.magicstudio.ai
 ENV PORT=3000
 ENV NEXT_TELEMETRY_DISABLED=1
 
@@ -63,24 +63,24 @@ RUN ln -s /usr/share/zoneinfo/${TZ} /etc/localtime \
     && echo ${TZ} > /etc/timezone
 
 # Create non-root user
-ARG dify_uid=1001
-RUN addgroup -S -g ${dify_uid} dify && \
-    adduser -S -u ${dify_uid} -G dify -s /bin/ash -h /home/dify dify && \
+ARG magic_studio_uid=1001
+RUN addgroup -S -g ${magic_studio_uid} magicstudio && \
+    adduser -S -u ${magic_studio_uid} -G magicstudio -s /bin/ash -h /home/magicstudio magicstudio && \
     mkdir /app && \
-    chown -R dify:dify /app
+    chown -R magicstudio:magicstudio /app
 
 
 WORKDIR /app
 
-COPY --from=builder --chown=dify:dify /app/web/public ./web/public
-COPY --from=builder --chown=dify:dify /app/web/.next/standalone ./
-COPY --from=builder --chown=dify:dify /app/web/.next/static ./web/.next/static
+COPY --from=builder --chown=magicstudio:magicstudio /app/web/public ./web/public
+COPY --from=builder --chown=magicstudio:magicstudio /app/web/.next/standalone ./
+COPY --from=builder --chown=magicstudio:magicstudio /app/web/.next/static ./web/.next/static
 
-COPY --chown=dify:dify --chmod=755 web/docker/entrypoint.sh ./entrypoint.sh
+COPY --chown=magicstudio:magicstudio --chmod=755 web/docker/entrypoint.sh ./entrypoint.sh
 
 ARG COMMIT_SHA
 ENV COMMIT_SHA=${COMMIT_SHA}
 
-USER dify
+USER magicstudio
 EXPOSE 3000
 ENTRYPOINT ["/bin/sh", "./entrypoint.sh"]

@@ -5,10 +5,10 @@ from typing import TYPE_CHECKING
 from flask import Flask
 
 if TYPE_CHECKING:
-    from extensions.ext_login import DifyLoginManager
+    from extensions.ext_login import MagicStudioLoginManager
 
 
 class MagicStudioApp(Flask):
-    """Flask application type with Dify-specific extension attributes."""
+    """Flask application type with Magic Studio-specific extension attributes."""
 
-    login_manager: DifyLoginManager
+    login_manager: MagicStudioLoginManager

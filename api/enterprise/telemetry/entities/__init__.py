@@ -6,27 +6,27 @@ from pydantic import BaseModel, ConfigDict
 
 
 class EnterpriseTelemetrySpan(StrEnum):
-    WORKFLOW_RUN = "dify.workflow.run"
-    NODE_EXECUTION = "dify.node.execution"
-    DRAFT_NODE_EXECUTION = "dify.node.execution.draft"
+    WORKFLOW_RUN = "magicstudio.workflow.run"
+    NODE_EXECUTION = "magicstudio.node.execution"
+    DRAFT_NODE_EXECUTION = "magicstudio.node.execution.draft"
 
 
 class EnterpriseTelemetryEvent(StrEnum):
     """Event names for enterprise telemetry logs."""
 
-    APP_CREATED = "dify.app.created"
-    APP_UPDATED = "dify.app.updated"
-    APP_DELETED = "dify.app.deleted"
-    FEEDBACK_CREATED = "dify.feedback.created"
-    WORKFLOW_RUN = "dify.workflow.run"
-    MESSAGE_RUN = "dify.message.run"
-    TOOL_EXECUTION = "dify.tool.execution"
-    MODERATION_CHECK = "dify.moderation.check"
-    SUGGESTED_QUESTION_GENERATION = "dify.suggested_question.generation"
-    DATASET_RETRIEVAL = "dify.dataset.retrieval"
-    GENERATE_NAME_EXECUTION = "dify.generate_name.execution"
-    PROMPT_GENERATION_EXECUTION = "dify.prompt_generation.execution"
-    REHYDRATION_FAILED = "dify.telemetry.rehydration_failed"
+    APP_CREATED = "magicstudio.app.created"
+    APP_UPDATED = "magicstudio.app.updated"
+    APP_DELETED = "magicstudio.app.deleted"
+    FEEDBACK_CREATED = "magicstudio.feedback.created"
+    WORKFLOW_RUN = "magicstudio.workflow.run"
+    MESSAGE_RUN = "magicstudio.message.run"
+    TOOL_EXECUTION = "magicstudio.tool.execution"
+    MODERATION_CHECK = "magicstudio.moderation.check"
+    SUGGESTED_QUESTION_GENERATION = "magicstudio.suggested_question.generation"
+    DATASET_RETRIEVAL = "magicstudio.dataset.retrieval"
+    GENERATE_NAME_EXECUTION = "magicstudio.generate_name.execution"
+    PROMPT_GENERATION_EXECUTION = "magicstudio.prompt_generation.execution"
+    REHYDRATION_FAILED = "magicstudio.telemetry.rehydration_failed"
 
 
 class EnterpriseTelemetryCounter(StrEnum):
@@ -52,9 +52,9 @@ class EnterpriseTelemetryHistogram(StrEnum):
 
 
 class TokenMetricLabels(BaseModel):
-    """Unified label structure for all dify.token.* metrics.
+    """Unified label structure for all magicstudio.token.* metrics.
 
-    All token counters (dify.tokens.input, dify.tokens.output, dify.tokens.total) MUST
+    All token counters (magicstudio.tokens.input, magicstudio.tokens.output, magicstudio.tokens.total) MUST
     use this exact label set to ensure consistent filtering and aggregation across
     different operation types.
 

@@ -14,6 +14,7 @@ import { v4 as uuid4 } from 'uuid'
 import ActionButton from '@/app/components/base/action-button'
 import Badge from '@/app/components/base/badge'
 import { Slack, Teams } from '@/app/components/base/icons/src/public/other'
+import { BRAND_CONTACT_EMAIL, BRAND_CONTACT_MAILTO } from '@/constants/brand'
 import {
   PortalToFollowElem,
   PortalToFollowElemContent,
@@ -209,7 +210,8 @@ const MethodSelector: FC<MethodSelectorProps> = ({
                 <Trans
                   i18nKey={`${i18nPrefix}.deliveryMethod.contactTip2`}
                   ns="workflow"
-                  components={{ email: <a href="mailto:support@dify.ai" className="text-text-accent-light-mode-only">support@dify.ai</a> }}
+                  values={{ email: BRAND_CONTACT_EMAIL }}
+                  components={{ email: <a href={BRAND_CONTACT_MAILTO} className="text-text-accent-light-mode-only">{BRAND_CONTACT_EMAIL}</a> }}
                 />
               </div>
             </div>

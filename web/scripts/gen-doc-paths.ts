@@ -1,7 +1,7 @@
 // GENERATE BY script
 // DON NOT EDIT IT MANUALLY
 //
-// This script fetches the docs.json from dify-docs repository
+// This script fetches the docs.json from the Magic Studio docs repository
 // and generates TypeScript types for documentation paths.
 //
 // Usage: pnpm gen-doc-paths
@@ -11,7 +11,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const DOCS_JSON_URL = 'https://raw.githubusercontent.com/langgenius/dify-docs/refs/heads/main/docs.json'
+const DOCS_JSON_URL = 'https://raw.githubusercontent.com/krishtyagi260605-gif/magic-studio-demo-model-magic-studio/main/docs/docs.json'
 const OUTPUT_PATH = path.resolve(__dirname, '../types/doc-paths.ts')
 
 type NavItem = string | NavObject | NavItem[]
@@ -58,7 +58,7 @@ type DocsJson = {
   [key: string]: unknown
 }
 
-const OPENAPI_BASE_URL = 'https://raw.githubusercontent.com/langgenius/dify-docs/refs/heads/main/'
+const OPENAPI_BASE_URL = 'https://raw.githubusercontent.com/krishtyagi260605-gif/magic-studio-demo-model-magic-studio/main/docs/'
 
 /**
  * Convert summary to URL slug
@@ -287,7 +287,7 @@ function generateTypeDefinitions(
     if (section === 'use-dify') {
       lines.push('// UseDify node paths (without prefix)')
       // eslint-disable-next-line no-template-curly-in-string
-      lines.push('type ExtractNodesPath<T> = T extends `/use-dify/nodes/${infer Path}` ? Path : never')
+      lines.push('type ExtractNodesPath<T> = T extends `/magic-studio/nodes/${infer Path}` ? Path : never')
       lines.push('export type UseDifyNodesPath = ExtractNodesPath<UseDifyPath>')
       lines.push('')
     }

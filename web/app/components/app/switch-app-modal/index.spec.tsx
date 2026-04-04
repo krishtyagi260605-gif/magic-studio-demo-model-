@@ -33,7 +33,7 @@ vi.mock('@/context/app-context', () => ({
     userProfile: {
       email: 'user@example.com',
     },
-    langGeniusVersionInfo: {
+    magicStudioVersionInfo: {
       current_version: '1.0.0',
     },
   }),

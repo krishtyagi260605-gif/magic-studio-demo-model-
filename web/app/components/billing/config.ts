@@ -1,5 +1,6 @@
 import type { BasicPlan, PlanInfo } from '@/app/components/billing/type'
 import { Plan, Priority } from '@/app/components/billing/type'
+import { BRAND_REPO_URL } from '@/constants/brand'
 
 const supportModelProviders = 'OpenAI/Anthropic/Llama2/Azure OpenAI/Hugging Face/Replicate'
 
@@ -7,8 +8,8 @@ export const NUM_INFINITE = -1
 export const contractSales = 'contractSales'
 export const unAvailable = 'unAvailable'
 
-export const contactSalesUrl = 'https://vikgc6bnu1s.typeform.com/dify-business'
-export const getStartedWithCommunityUrl = 'https://github.com/langgenius/dify'
+export const contactSalesUrl = 'mailto:hello@magicstudio.dev'
+export const getStartedWithCommunityUrl = BRAND_REPO_URL
 export const getWithPremiumUrl = 'https://aws.amazon.com/marketplace/pp/prodview-t22mebxzwjhu6'
 
 export const ALL_PLANS: Record<BasicPlan, PlanInfo> = {

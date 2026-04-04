@@ -106,11 +106,14 @@ const InstallForm = () => {
       : (
           <>
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
-              <h2 className="text-[32px] font-bold text-text-primary">{t('setAdminAccount', { ns: 'login' })}</h2>
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#bde7ff]">
+                Magic Studio
+              </div>
+              <h2 className="text-[32px] font-bold tracking-[-0.03em] text-text-primary">{t('setAdminAccount', { ns: 'login' })}</h2>
               <p className="mt-1 text-sm text-text-secondary">{t('setAdminAccountDesc', { ns: 'login' })}</p>
             </div>
             <div className="mt-8 grow sm:mx-auto sm:w-full sm:max-w-md">
-              <div className="relative">
+              <div className="relative rounded-[28px] border border-white/8 bg-white/4 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.32)] backdrop-blur-xl">
                 <formContext.Provider value={form}>
                   <form
                     onSubmit={(e) => {

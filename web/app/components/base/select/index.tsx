@@ -2,7 +2,7 @@
 /**
  * @deprecated Use `@/app/components/base/ui/select` instead.
  * This component will be removed after migration is complete.
- * See: https://github.com/langgenius/dify/issues/32767
+ * See: internal overlay compatibility note.
  */
 import type { FC } from 'react'
 import { Combobox, ComboboxButton, ComboboxInput, ComboboxOption, ComboboxOptions, Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react'

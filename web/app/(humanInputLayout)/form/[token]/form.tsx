@@ -18,7 +18,7 @@ import ContentItem from '@/app/components/base/chat/chat/answer/human-input-cont
 import ExpirationTime from '@/app/components/base/chat/chat/answer/human-input-content/expiration-time'
 import { getButtonStyle } from '@/app/components/base/chat/chat/answer/human-input-content/utils'
 import Loading from '@/app/components/base/loading'
-import DifyLogo from '@/app/components/base/logo/dify-logo'
+import MagicStudioLogo from '@/app/components/base/logo/magic-studio-logo'
 import useDocumentTitle from '@/hooks/use-document-title'
 import { useParams } from '@/next/navigation'
 import { useGetHumanInputForm, useSubmitHumanInputForm } from '@/service/use-share'
@@ -117,7 +117,7 @@ const FormContent = () => {
             )}
             >
               <div className="system-2xs-medium-uppercase text-text-tertiary">{t('chat.poweredBy', { ns: 'share' })}</div>
-              <DifyLogo size="small" />
+              <MagicStudioLogo size="small" />
             </div>
           </div>
         </div>
@@ -145,7 +145,7 @@ const FormContent = () => {
             )}
             >
               <div className="system-2xs-medium-uppercase text-text-tertiary">{t('chat.poweredBy', { ns: 'share' })}</div>
-              <DifyLogo size="small" />
+              <MagicStudioLogo size="small" />
             </div>
           </div>
         </div>
@@ -173,7 +173,7 @@ const FormContent = () => {
             )}
             >
               <div className="system-2xs-medium-uppercase text-text-tertiary">{t('chat.poweredBy', { ns: 'share' })}</div>
-              <DifyLogo size="small" />
+              <MagicStudioLogo size="small" />
             </div>
           </div>
         </div>
@@ -199,7 +199,7 @@ const FormContent = () => {
             )}
             >
               <div className="system-2xs-medium-uppercase text-text-tertiary">{t('chat.poweredBy', { ns: 'share' })}</div>
-              <DifyLogo size="small" />
+              <MagicStudioLogo size="small" />
             </div>
           </div>
         </div>
@@ -225,7 +225,7 @@ const FormContent = () => {
             )}
             >
               <div className="system-2xs-medium-uppercase text-text-tertiary">{t('chat.poweredBy', { ns: 'share' })}</div>
-              <DifyLogo size="small" />
+              <MagicStudioLogo size="small" />
             </div>
           </div>
         </div>
@@ -278,7 +278,7 @@ const FormContent = () => {
           )}
           >
             <div className="system-2xs-medium-uppercase text-text-tertiary">{t('chat.poweredBy', { ns: 'share' })}</div>
-            <DifyLogo size="small" />
+            <MagicStudioLogo size="small" />
           </div>
         </div>
       </div>

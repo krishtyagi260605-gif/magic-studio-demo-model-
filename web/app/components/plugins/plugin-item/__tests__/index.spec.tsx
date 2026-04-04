@@ -50,7 +50,7 @@ const mockLangGeniusVersionInfo = vi.fn(() => ({
 }))
 vi.mock('@/context/app-context', () => ({
   useAppContext: () => ({
-    langGeniusVersionInfo: mockLangGeniusVersionInfo(),
+    magicStudioVersionInfo: mockLangGeniusVersionInfo(),
   }),
 }))
 

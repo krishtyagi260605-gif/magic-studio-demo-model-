@@ -1,4 +1,4 @@
-"""Structured JSON log formatter for Dify."""
+"""Structured JSON log formatter for Magic Studio."""
 
 import logging
 import traceback

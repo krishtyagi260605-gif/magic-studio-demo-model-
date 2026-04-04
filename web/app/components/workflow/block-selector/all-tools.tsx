@@ -17,6 +17,7 @@ import { useTranslation } from 'react-i18next'
 import Button from '@/app/components/base/button'
 import Divider from '@/app/components/base/divider'
 import { SearchMenu } from '@/app/components/base/icons/src/vender/line/general'
+import { BRAND_REPO_URL } from '@/constants/brand'
 import PluginList from '@/app/components/workflow/block-selector/market-place-plugin/list'
 import { useGlobalPublicStore } from '@/context/global-public-context'
 import { useGetLanguage } from '@/context/i18n'
@@ -296,7 +297,7 @@ const AllTools = ({
                 {t('tabs.noPluginsFound', { ns: 'workflow' })}
               </div>
               <Link
-                href="https://github.com/langgenius/dify-plugins/issues/new?template=plugin_request.yaml"
+                href={BRAND_REPO_URL}
                 target="_blank"
               >
                 <Button

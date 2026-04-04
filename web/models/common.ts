@@ -40,7 +40,7 @@ export type UserProfileOriginResponse = {
   headers: any
 }
 
-export type LangGeniusVersionResponse = {
+export type MagicStudioVersionResponse = {
   current_version: string
   latest_version: string
   version: string

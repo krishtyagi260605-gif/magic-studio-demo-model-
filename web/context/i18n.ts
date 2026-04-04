@@ -2,6 +2,7 @@ import type { Locale } from '@/i18n-config/language'
 import type { DocPathWithoutLang } from '@/types/doc-paths'
 import { useTranslation } from '#i18n'
 import { useCallback } from 'react'
+import { BRAND_HELP_URL } from '@/constants/brand'
 import { getDocLanguage, getLanguage, getPricingPageLanguage } from '@/i18n-config/language'
 import { apiReferencePathTranslations } from '@/types/doc-paths'
 
@@ -21,7 +22,7 @@ export const useGetPricingPageLanguage = () => {
   return getPricingPageLanguage(locale)
 }
 
-export const defaultDocBaseUrl = 'https://docs.dify.ai'
+export const defaultDocBaseUrl = BRAND_HELP_URL
 export type DocPathMap = Partial<Record<Locale, DocPathWithoutLang>>
 
 export const useDocLink = (baseUrl?: string): ((path?: DocPathWithoutLang, pathMap?: DocPathMap) => string) => {
@@ -30,6 +31,9 @@ export const useDocLink = (baseUrl?: string): ((path?: DocPathWithoutLang, pathM
   const locale = useLocale()
   return useCallback(
     (path?: DocPathWithoutLang, pathMap?: DocPathMap): string => {
+      if (baseDocUrl === BRAND_HELP_URL)
+        return BRAND_HELP_URL
+
       const docLanguage = getDocLanguage(locale)
       const pathUrl = path || ''
       let targetPath = (pathMap) ? pathMap[locale] || pathUrl : pathUrl

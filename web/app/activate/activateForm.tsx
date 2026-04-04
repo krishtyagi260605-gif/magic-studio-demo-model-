@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import Button from '@/app/components/base/button'
 import Loading from '@/app/components/base/loading'
+import { basePath } from '@/utils/var'
 import useDocumentTitle from '@/hooks/use-document-title'
 
 import { useRouter, useSearchParams } from '@/next/navigation'
@@ -60,7 +61,7 @@ const ActivateForm = () => {
           </div>
           <div className="mx-auto mt-6 w-full">
             <Button variant="primary" className="w-full text-sm!">
-              <a href="https://dify.ai">{t('explore', { ns: 'login' })}</a>
+              <a href={`${basePath}/signin`}>{t('explore', { ns: 'login' })}</a>
             </Button>
           </div>
         </div>

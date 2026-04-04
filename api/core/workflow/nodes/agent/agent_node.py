@@ -9,7 +9,7 @@ from graphon.node_events import NodeEventBase, NodeRunResult, StreamCompletedEve
 from graphon.nodes.base.node import Node
 from graphon.nodes.base.variable_template_parser import VariableTemplateParser
 
-from core.app.entities.app_invoke_entities import DIFY_RUN_CONTEXT_KEY, DifyRunContext
+from core.app.entities.app_invoke_entities import MAGIC_STUDIO_RUN_CONTEXT_KEY, MagicStudioRunContext
 from core.workflow.system_variables import SystemVariableKey, get_system_text
 
 from .entities import AgentNodeData
@@ -62,11 +62,13 @@ class AgentNode(Node[AgentNodeData]):
         return "1"
 
     def populate_start_event(self, event) -> None:
-        dify_ctx = DifyRunContext.model_validate(self.require_run_context_value(DIFY_RUN_CONTEXT_KEY))
+        magic_studio_ctx = MagicStudioRunContext.model_validate(
+            self.require_run_context_value(MAGIC_STUDIO_RUN_CONTEXT_KEY)
+        )
         event.extras["agent_strategy"] = {
             "name": self.node_data.agent_strategy_name,
             "icon": self._presentation_provider.get_icon(
-                tenant_id=dify_ctx.tenant_id,
+                tenant_id=magic_studio_ctx.tenant_id,
                 agent_strategy_provider_name=self.node_data.agent_strategy_provider_name,
             ),
         }
@@ -74,11 +76,13 @@ class AgentNode(Node[AgentNodeData]):
     def _run(self) -> Generator[NodeEventBase, None, None]:
         from core.plugin.impl.exc import PluginDaemonClientSideError
 
-        dify_ctx = DifyRunContext.model_validate(self.require_run_context_value(DIFY_RUN_CONTEXT_KEY))
+        magic_studio_ctx = MagicStudioRunContext.model_validate(
+            self.require_run_context_value(MAGIC_STUDIO_RUN_CONTEXT_KEY)
+        )
 
         try:
             strategy = self._strategy_resolver.resolve(
-                tenant_id=dify_ctx.tenant_id,
+                tenant_id=magic_studio_ctx.tenant_id,
                 agent_strategy_provider_name=self.node_data.agent_strategy_provider_name,
                 agent_strategy_name=self.node_data.agent_strategy_name,
             )
@@ -99,20 +103,20 @@ class AgentNode(Node[AgentNodeData]):
             variable_pool=self.graph_runtime_state.variable_pool,
             node_data=self.node_data,
             strategy=strategy,
-            tenant_id=dify_ctx.tenant_id,
-            user_id=dify_ctx.user_id,
-            app_id=dify_ctx.app_id,
-            invoke_from=dify_ctx.invoke_from,
+            tenant_id=magic_studio_ctx.tenant_id,
+            user_id=magic_studio_ctx.user_id,
+            app_id=magic_studio_ctx.app_id,
+            invoke_from=magic_studio_ctx.invoke_from,
         )
         parameters_for_log = self._runtime_support.build_parameters(
             agent_parameters=agent_parameters,
             variable_pool=self.graph_runtime_state.variable_pool,
             node_data=self.node_data,
             strategy=strategy,
-            tenant_id=dify_ctx.tenant_id,
-            user_id=dify_ctx.user_id,
-            app_id=dify_ctx.app_id,
-            invoke_from=dify_ctx.invoke_from,
+            tenant_id=magic_studio_ctx.tenant_id,
+            user_id=magic_studio_ctx.user_id,
+            app_id=magic_studio_ctx.app_id,
+            invoke_from=magic_studio_ctx.invoke_from,
             for_log=True,
         )
         credentials = self._runtime_support.build_credentials(parameters=parameters)
@@ -122,8 +126,8 @@ class AgentNode(Node[AgentNodeData]):
         try:
             message_stream = strategy.invoke(
                 params=parameters,
-                user_id=dify_ctx.user_id,
-                app_id=dify_ctx.app_id,
+                user_id=magic_studio_ctx.user_id,
+                app_id=magic_studio_ctx.app_id,
                 conversation_id=conversation_id,
                 credentials=credentials,
             )
@@ -143,14 +147,14 @@ class AgentNode(Node[AgentNodeData]):
                 messages=message_stream,
                 tool_info={
                     "icon": self._presentation_provider.get_icon(
-                        tenant_id=dify_ctx.tenant_id,
+                        tenant_id=magic_studio_ctx.tenant_id,
                         agent_strategy_provider_name=self.node_data.agent_strategy_provider_name,
                     ),
                     "agent_strategy": self.node_data.agent_strategy_name,
                 },
                 parameters_for_log=parameters_for_log,
-                user_id=dify_ctx.user_id,
-                tenant_id=dify_ctx.tenant_id,
+                user_id=magic_studio_ctx.user_id,
+                tenant_id=magic_studio_ctx.tenant_id,
                 conversation_id=conversation_id,
                 node_type=self.node_type,
                 node_id=self._node_id,

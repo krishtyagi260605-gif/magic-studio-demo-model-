@@ -14,7 +14,7 @@ if TYPE_CHECKING:
     from core.ops.ops_trace_manager import TraceQueueManager
 
 
-DIFY_RUN_CONTEXT_KEY = "_dify"
+MAGIC_STUDIO_RUN_CONTEXT_KEY = "_magic_studio"
 
 
 class UserFrom(StrEnum):
@@ -46,7 +46,7 @@ class InvokeFrom(StrEnum):
         return source_mapping.get(self, "dev")
 
 
-class DifyRunContext(BaseModel):
+class MagicStudioRunContext(BaseModel):
     tenant_id: str
     app_id: str
     user_id: str
@@ -54,7 +54,7 @@ class DifyRunContext(BaseModel):
     invoke_from: InvokeFrom
 
 
-def build_dify_run_context(
+def build_magic_studio_run_context(
     *,
     tenant_id: str,
     app_id: str,
@@ -64,13 +64,13 @@ def build_dify_run_context(
     extra_context: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
     """
-    Build graph run_context with the reserved Dify runtime payload.
+    Build graph run_context with the reserved Magic Studio runtime payload.
 
-    `extra_context` can carry user-defined context keys. The reserved `_dify`
+    `extra_context` can carry user-defined context keys. The reserved `_magic_studio`
     payload is always overwritten by this function to keep one canonical source.
     """
     run_context = dict(extra_context) if extra_context else {}
-    run_context[DIFY_RUN_CONTEXT_KEY] = DifyRunContext(
+    run_context[MAGIC_STUDIO_RUN_CONTEXT_KEY] = MagicStudioRunContext(
         tenant_id=tenant_id,
         app_id=app_id,
         user_id=user_id,

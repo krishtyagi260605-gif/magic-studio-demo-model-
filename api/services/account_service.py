@@ -1358,7 +1358,7 @@ class RegisterService:
     @classmethod
     def setup(cls, email: str, name: str, password: str, ip_address: str, language: str | None):
         """
-        Setup dify
+        Setup magic studio
 
         :param email: email
         :param name: username
@@ -1505,7 +1505,7 @@ class RegisterService:
             language=language,
             to=account.email,
             token=token,
-            inviter_name=inviter.name if inviter else "Dify",
+            inviter_name=inviter.name if inviter else "Magic Studio",
             workspace_name=tenant.name,
         )
 

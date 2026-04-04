@@ -105,9 +105,9 @@ class SchemaRegistry:
 
     def _parse_uri(self, uri: str) -> tuple[str, str]:
         """Parses a schema URI to extract version and schema name"""
-        from core.schemas.resolver import parse_dify_schema_uri
+        from core.schemas.resolver import parse_magic_studio_schema_uri
 
-        return parse_dify_schema_uri(uri)
+        return parse_magic_studio_schema_uri(uri)
 
     def list_versions(self) -> list[str]:
         """Returns all available versions"""

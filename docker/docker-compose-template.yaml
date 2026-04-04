@@ -163,8 +163,8 @@ services:
       CSP_WHITELIST: ${CSP_WHITELIST:-}
       ALLOW_EMBED: ${ALLOW_EMBED:-false}
       ALLOW_UNSAFE_DATA_SCHEME: ${ALLOW_UNSAFE_DATA_SCHEME:-false}
-      MARKETPLACE_API_URL: ${MARKETPLACE_API_URL:-https://marketplace.dify.ai}
-      MARKETPLACE_URL: ${MARKETPLACE_URL:-https://marketplace.dify.ai}
+      MARKETPLACE_API_URL: ${MARKETPLACE_API_URL:-https://marketplace.magicstudio.ai}
+      MARKETPLACE_URL: ${MARKETPLACE_URL:-https://marketplace.magicstudio.ai}
       TOP_K_MAX_VALUE: ${TOP_K_MAX_VALUE:-}
       INDEXING_MAX_SEGMENTATION_TOKENS_LENGTH: ${INDEXING_MAX_SEGMENTATION_TOKENS_LENGTH:-}
       LOOP_NODE_MAX_COUNT: ${LOOP_NODE_MAX_COUNT:-100}
@@ -185,7 +185,7 @@ services:
     environment:
       POSTGRES_USER: ${DB_USERNAME:-postgres}
       POSTGRES_PASSWORD: ${DB_PASSWORD:-difyai123456}
-      POSTGRES_DB: ${DB_DATABASE:-dify}
+      POSTGRES_DB: ${DB_DATABASE:-magicstudio}
       PGDATA: ${PGDATA:-/var/lib/postgresql/data/pgdata}
     command: >
       postgres -c 'max_connections=${POSTGRES_MAX_CONNECTIONS:-100}'
@@ -207,7 +207,7 @@ services:
           "-U",
           "${DB_USERNAME:-postgres}",
           "-d",
-          "${DB_DATABASE:-dify}",
+          "${DB_DATABASE:-magicstudio}",
         ]
       interval: 1s
       timeout: 3s
@@ -221,7 +221,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-difyai123456}
-      MYSQL_DATABASE: ${DB_DATABASE:-dify}
+      MYSQL_DATABASE: ${DB_DATABASE:-magicstudio}
     command: >
       --max_connections=1000
       --innodb_buffer_pool_size=${MYSQL_INNODB_BUFFER_POOL_SIZE:-512M}
@@ -269,7 +269,7 @@ services:
       # The DifySandbox configurations
       # Make sure you are changing this key for your deployment with a strong key.
       # You can generate a strong key using `openssl rand -base64 42`.
-      API_KEY: ${SANDBOX_API_KEY:-dify-sandbox}
+      API_KEY: ${SANDBOX_API_KEY:-magic-studio-sandbox}
       GIN_MODE: ${SANDBOX_GIN_MODE:-release}
       WORKER_TIMEOUT: ${SANDBOX_WORKER_TIMEOUT:-15}
       ENABLE_NETWORK: ${SANDBOX_ENABLE_NETWORK:-true}
@@ -431,8 +431,8 @@ services:
       NGINX_PORT: ${NGINX_PORT:-80}
       # You're required to add your own SSL certificates/keys to the `./nginx/ssl` directory
       # and modify the env vars below in .env if HTTPS_ENABLED is true.
-      NGINX_SSL_CERT_FILENAME: ${NGINX_SSL_CERT_FILENAME:-dify.crt}
-      NGINX_SSL_CERT_KEY_FILENAME: ${NGINX_SSL_CERT_KEY_FILENAME:-dify.key}
+      NGINX_SSL_CERT_FILENAME: ${NGINX_SSL_CERT_FILENAME:-magic-studio.crt}
+      NGINX_SSL_CERT_KEY_FILENAME: ${NGINX_SSL_CERT_KEY_FILENAME:-magic-studio.key}
       NGINX_SSL_PROTOCOLS: ${NGINX_SSL_PROTOCOLS:-TLSv1.2 TLSv1.3}
       NGINX_WORKER_PROCESSES: ${NGINX_WORKER_PROCESSES:-auto}
       NGINX_CLIENT_MAX_BODY_SIZE: ${NGINX_CLIENT_MAX_BODY_SIZE:-100M}
@@ -467,9 +467,9 @@ services:
       CLUSTER_HOSTNAME: ${WEAVIATE_CLUSTER_HOSTNAME:-node1}
       AUTHENTICATION_APIKEY_ENABLED: ${WEAVIATE_AUTHENTICATION_APIKEY_ENABLED:-true}
       AUTHENTICATION_APIKEY_ALLOWED_KEYS: ${WEAVIATE_AUTHENTICATION_APIKEY_ALLOWED_KEYS:-WVF5YThaHlkYwhGUSmCRgsX3tD5ngdN8pkih}
-      AUTHENTICATION_APIKEY_USERS: ${WEAVIATE_AUTHENTICATION_APIKEY_USERS:-hello@dify.ai}
+      AUTHENTICATION_APIKEY_USERS: ${WEAVIATE_AUTHENTICATION_APIKEY_USERS:-hello@magicstudio.dev}
       AUTHORIZATION_ADMINLIST_ENABLED: ${WEAVIATE_AUTHORIZATION_ADMINLIST_ENABLED:-true}
-      AUTHORIZATION_ADMINLIST_USERS: ${WEAVIATE_AUTHORIZATION_ADMINLIST_USERS:-hello@dify.ai}
+      AUTHORIZATION_ADMINLIST_USERS: ${WEAVIATE_AUTHORIZATION_ADMINLIST_USERS:-hello@magicstudio.dev}
       DISABLE_TELEMETRY: ${WEAVIATE_DISABLE_TELEMETRY:-false}
       ENABLE_TOKENIZER_GSE: ${WEAVIATE_ENABLE_TOKENIZER_GSE:-false}
       ENABLE_TOKENIZER_KAGOME_JA: ${WEAVIATE_ENABLE_TOKENIZER_KAGOME_JA:-false}
@@ -520,7 +520,7 @@ services:
     environment:
       ROOT_PASSWORD: ${OCEANBASE_VECTOR_PASSWORD:-difyai123456}
       MEMORY_LIMIT: ${SEEKDB_MEMORY_LIMIT:-2G}
-      REPORTER: dify-ai-seekdb
+      REPORTER: magic-studio-seekdb
     ports:
       - "${OCEANBASE_VECTOR_PORT:-2881}:2881"
     healthcheck:
@@ -593,7 +593,7 @@ services:
       # The password for the default postgres user.
       POSTGRES_PASSWORD: ${PGVECTOR_POSTGRES_PASSWORD:-difyai123456}
       # The name of the default postgres database.
-      POSTGRES_DB: ${PGVECTOR_POSTGRES_DB:-dify}
+      POSTGRES_DB: ${PGVECTOR_POSTGRES_DB:-magicstudio}
       # postgres data directory
       PGDATA: ${PGVECTOR_PGDATA:-/var/lib/postgresql/data/pgdata}
       # pg_bigm module for full text search
@@ -617,8 +617,8 @@ services:
     restart: always
     environment:
       - VB_DBCOMPATIBILITY=PG
-      - VB_DB=dify
-      - VB_USERNAME=dify
+      - VB_DB=magicstudio
+      - VB_USERNAME=magicstudio
       - VB_PASSWORD=Difyai123456
     ports:
       - "5434:5432"
@@ -644,7 +644,7 @@ services:
       # The password for the default postgres user.
       POSTGRES_PASSWORD: ${PGVECTOR_POSTGRES_PASSWORD:-difyai123456}
       # The name of the default postgres database.
-      POSTGRES_DB: ${PGVECTOR_POSTGRES_DB:-dify}
+      POSTGRES_DB: ${PGVECTOR_POSTGRES_DB:-magicstudio}
       # postgres data directory
       PGDATA: ${PGVECTOR_PGDATA:-/var/lib/postgresql/data/pgdata}
     volumes:
@@ -818,9 +818,9 @@ services:
     restart: always
     environment:
       GS_USERNAME: ${OPENGAUSS_USER:-postgres}
-      GS_PASSWORD: ${OPENGAUSS_PASSWORD:-Dify@123}
+      GS_PASSWORD: ${OPENGAUSS_PASSWORD:-MagicStudio@123}
       GS_PORT: ${OPENGAUSS_PORT:-6600}
-      GS_DB: ${OPENGAUSS_DATABASE:-dify}
+      GS_DB: ${OPENGAUSS_DATABASE:-magicstudio}
     volumes:
       - ./volumes/opengauss/data:/var/lib/opengauss/data
     healthcheck:
@@ -873,8 +873,8 @@ services:
     environment:
       ELASTIC_PASSWORD: ${ELASTICSEARCH_PASSWORD:-elastic}
       VECTOR_STORE: ${VECTOR_STORE:-}
-      cluster.name: dify-es-cluster
-      node.name: dify-es0
+      cluster.name: magic-studio-es-cluster
+      node.name: magic-studio-es0
       discovery.type: single-node
       xpack.license.self_generated.type: basic
       xpack.security.enabled: "true"

@@ -7,7 +7,7 @@ import { createMockProviderContextValue } from '@/__mocks__/provider-context'
 import { contactSalesUrl, defaultPlan } from '@/app/components/billing/config'
 import { Plan } from '@/app/components/billing/type'
 import {
-  initialLangGeniusVersionInfo,
+  initialMagicStudioVersionInfo,
   initialWorkspaceInfo,
   useAppContext,
   userProfilePlaceholder,
@@ -87,7 +87,7 @@ const createAppContextValue = (): AppContextValue => ({
   isCurrentWorkspaceEditor: false,
   isCurrentWorkspaceDatasetOperator: false,
   mutateCurrentWorkspace: vi.fn(),
-  langGeniusVersionInfo: initialLangGeniusVersionInfo,
+  magicStudioVersionInfo: initialMagicStudioVersionInfo,
   useSelector: vi.fn() as unknown as AppContextValue['useSelector'],
   isLoadingCurrentWorkspace: false,
   isValidatingCurrentWorkspace: false,

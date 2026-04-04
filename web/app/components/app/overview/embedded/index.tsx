@@ -39,7 +39,7 @@ const OPTION_MAP = {
   scripts: {
     getContent: (url: string, token: string, primaryColor: string, isTestEnv?: boolean) =>
       `<script>
- window.difyChatbotConfig = {
+ window.magicStudioChatbotConfig = {
   token: '${token}'${isTestEnv
     ? `,
   isDev: true`
@@ -69,10 +69,10 @@ const OPTION_MAP = {
  defer>
 </script>
 <style>
-  #dify-chatbot-bubble-button {
+  #magic-studio-chatbot-bubble-button {
     background-color: ${primaryColor} !important;
   }
-  #dify-chatbot-bubble-window {
+  #magic-studio-chatbot-bubble-window {
     width: 24rem !important;
     height: 40rem !important;
   }
@@ -97,10 +97,10 @@ const Embedded = ({ siteInfo, isShow, onClose, appBaseUrl, accessToken, classNam
   const [option, setOption] = useState<Option>('iframe')
   const [isCopied, setIsCopied] = useState<OptionStatus>({ iframe: false, scripts: false, chromePlugin: false })
 
-  const { langGeniusVersionInfo } = useAppContext()
+  const { magicStudioVersionInfo } = useAppContext()
   const themeBuilder = useThemeContext()
   themeBuilder.buildTheme(siteInfo?.chat_color_theme ?? null, siteInfo?.chat_color_theme_inverted ?? false)
-  const isTestEnv = langGeniusVersionInfo.current_env === 'TESTING' || langGeniusVersionInfo.current_env === 'DEVELOPMENT'
+  const isTestEnv = magicStudioVersionInfo.current_env === 'TESTING' || magicStudioVersionInfo.current_env === 'DEVELOPMENT'
   const onClickCopy = () => {
     if (option === 'chromePlugin') {
       const splitUrl = OPTION_MAP[option].getContent(appBaseUrl, accessToken).split(': ')

@@ -15,6 +15,7 @@ import Button from '@/app/components/base/button'
 import TabSlider from '@/app/components/base/tab-slider'
 import Tooltip from '@/app/components/base/tooltip'
 import ReferenceSettingModal from '@/app/components/plugins/reference-setting-modal'
+import { BRAND_REPO_URL } from '@/constants/brand'
 import { MARKETPLACE_API_PREFIX, SUPPORT_INSTALL_LOCAL_FILE_EXTENSIONS } from '@/config'
 import { useGlobalPublicStore } from '@/context/global-public-context'
 import { useDocLink } from '@/context/i18n'
@@ -175,7 +176,7 @@ const PluginPage = ({
               isExploringMarketplace && (
                 <>
                   <Link
-                    href="https://github.com/langgenius/dify-plugins/issues/new?template=plugin_request.yaml"
+                    href={BRAND_REPO_URL}
                     target="_blank"
                   >
                     <Button
@@ -186,7 +187,7 @@ const PluginPage = ({
                     </Button>
                   </Link>
                   <Link
-                    href={docLink('/develop-plugin/publishing/marketplace-listing/release-to-dify-marketplace')}
+                    href={docLink('/develop-plugin/publishing/marketplace-listing/release-to-magic-studio-marketplace')}
                     target="_blank"
                   >
                     <Button

@@ -2,22 +2,23 @@ import type { SlashCommandHandler } from './types'
 import { RiFeedbackLine } from '@remixicon/react'
 import * as React from 'react'
 import { getI18n } from 'react-i18next'
+import { BRAND_REPO_URL } from '@/constants/brand'
 import { registerCommands, unregisterCommands } from './command-bus'
 
 // Forum command dependency types
 type ForumDeps = Record<string, never>
 
 /**
- * Forum command - Opens Dify community forum
+ * Forum command - Opens the Magic Studio repository
  */
 export const forumCommand: SlashCommandHandler<ForumDeps> = {
   name: 'forum',
-  description: 'Open Dify community forum',
+  description: 'Open Magic Studio GitHub repository',
   mode: 'direct',
 
   // Direct execution function
   execute: () => {
-    const url = 'https://forum.dify.ai'
+    const url = BRAND_REPO_URL
     window.open(url, '_blank', 'noopener,noreferrer')
   },
 
@@ -26,21 +27,21 @@ export const forumCommand: SlashCommandHandler<ForumDeps> = {
     return [{
       id: 'forum',
       title: i18n.t('userProfile.forum', { ns: 'common', lng: locale }),
-      description: i18n.t('gotoAnything.actions.feedbackDesc', { ns: 'app', lng: locale }) || 'Open community feedback discussions',
+      description: i18n.t('gotoAnything.actions.feedbackDesc', { ns: 'app', lng: locale }) || 'Open the Magic Studio GitHub repository',
       type: 'command' as const,
       icon: (
         <div className="flex h-6 w-6 items-center justify-center rounded-md border-[0.5px] border-divider-regular bg-components-panel-bg">
           <RiFeedbackLine className="h-4 w-4 text-text-tertiary" />
         </div>
       ),
-      data: { command: 'navigation.forum', args: { url: 'https://forum.dify.ai' } },
+      data: { command: 'navigation.forum', args: { url: BRAND_REPO_URL } },
     }]
   },
 
   register(_deps: ForumDeps) {
     registerCommands({
       'navigation.forum': async (args) => {
-        const url = args?.url || 'https://forum.dify.ai'
+        const url = args?.url || BRAND_REPO_URL
         window.open(url, '_blank', 'noopener,noreferrer')
       },
     })

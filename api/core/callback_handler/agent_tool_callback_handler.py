@@ -31,7 +31,7 @@ def print_text(text: str, color: str | None = None, end: str = "", file: TextIO 
         file.flush()  # ensure all printed content are written to file
 
 
-class DifyAgentCallbackHandler(BaseModel):
+class MagicStudioAgentCallbackHandler(BaseModel):
     """Callback Handler that prints to std out."""
 
     color: str | None = ""

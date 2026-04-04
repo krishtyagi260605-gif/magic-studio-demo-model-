@@ -103,7 +103,7 @@ const clientSchema = {
   /**
    * The URL for Web APP, refers to the Web App base URL of WEB service if web app domain is different from
    * console or api domain.
-   * example: http://udify.app/api
+   * example: http://magicstudio.app/api
    */
   NEXT_PUBLIC_PUBLIC_API_PREFIX: z.string().optional(),
   /**

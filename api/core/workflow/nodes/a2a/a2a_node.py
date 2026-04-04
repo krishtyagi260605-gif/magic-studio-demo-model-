@@ -8,7 +8,7 @@ from graphon.enums import BuiltinNodeTypes, WorkflowNodeExecutionStatus
 from graphon.node_events import NodeEventBase, NodeRunResult
 from graphon.nodes.base.node import Node
 
-from core.app.entities.app_invoke_entities import DifyRunContext
+from core.app.entities.app_invoke_entities import MagicStudioRunContext
 
 from .entities import A2ANodeData
 

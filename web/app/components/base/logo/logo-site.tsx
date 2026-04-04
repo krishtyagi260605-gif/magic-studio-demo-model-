@@ -1,7 +1,7 @@
 'use client'
 import type { FC } from 'react'
 import { cn } from '@/utils/classnames'
-import { basePath } from '@/utils/var'
+import MagicGlyph from './magic-glyph'
 
 type LogoSiteProps = {
   className?: string
@@ -10,13 +10,7 @@ type LogoSiteProps = {
 const LogoSite: FC<LogoSiteProps> = ({
   className,
 }) => {
-  return (
-    <img
-      src={`${basePath}/logo/logo.png`}
-      className={cn('block h-[24.5px] w-[22.651px]', className)}
-      alt="logo"
-    />
-  )
+  return <MagicGlyph className={cn('h-7 w-7', className)} />
 }
 
 export default LogoSite

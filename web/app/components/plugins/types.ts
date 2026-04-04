@@ -571,7 +571,7 @@ export type StrategyDeclaration = {
 }
 
 export type PluginMeta = {
-  version: string // the version of dify sdk
+  version: string // the version of Magic Studio SDK
 }
 
 export type StrategyPluginDetail = {

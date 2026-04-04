@@ -124,7 +124,7 @@ To help keep your existing `.env` file up to date **without losing your custom v
 > This tool performs a **one-way synchronization** from `.env.example` to `.env`.
 > Existing values in `.env` are never overwritten automatically.
 
-#### `dify-env-sync.sh` (Optional)
+#### `magic-studio-env-sync.sh` (Optional)
 
 This script compares your current `.env` file with the latest `.env.example` template and helps safely apply new or updated environment variables.
 
@@ -150,10 +150,10 @@ Before synchronization, the current `.env` file is saved to the `env-backup/` di
 
 ```bash
 # Grant execution permission (first time only)
-chmod +x dify-env-sync.sh
+chmod +x magic-studio-env-sync.sh
 
 # Run the synchronization
-./dify-env-sync.sh
+./magic-studio-env-sync.sh
 ```
 
 ### Additional Information

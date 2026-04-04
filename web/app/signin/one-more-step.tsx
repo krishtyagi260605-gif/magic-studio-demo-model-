@@ -6,6 +6,7 @@ import Button from '@/app/components/base/button'
 import { SimpleSelect } from '@/app/components/base/select'
 import Tooltip from '@/app/components/base/tooltip'
 import { toast } from '@/app/components/base/ui/toast'
+import { BRAND_CONTACT_EMAIL, BRAND_CONTACT_MAILTO } from '@/constants/brand'
 import { LICENSE_LINK } from '@/constants/link'
 import { languages, LanguagesSupported } from '@/i18n-config/language'
 import Link from '@/next/link'
@@ -89,12 +90,12 @@ const OneMoreStep = () => {
               {t('invitationCode', { ns: 'login' })}
               <Tooltip
                 popupContent={(
-                  <div className="w-[256px] text-xs font-medium">
-                    <div className="font-medium">{t('sendUsMail', { ns: 'login' })}</div>
-                    <div className="cursor-pointer text-xs font-medium text-text-accent-secondary">
-                      <a href="mailto:request-invitation@langgenius.ai">request-invitation@langgenius.ai</a>
+                    <div className="w-[256px] text-xs font-medium">
+                      <div className="font-medium">{t('sendUsMail', { ns: 'login' })}</div>
+                      <div className="cursor-pointer text-xs font-medium text-text-accent-secondary">
+                        <a href={BRAND_CONTACT_MAILTO}>{BRAND_CONTACT_EMAIL}</a>
+                      </div>
                     </div>
-                  </div>
                 )}
               >
                 <span className="cursor-pointer text-text-accent-secondary">{t('dontHave', { ns: 'login' })}</span>

@@ -1,6 +1,6 @@
 'use client'
 import { useCallback } from 'react'
-import DifyLogo from '@/app/components/base/logo/dify-logo'
+import MagicStudioLogo from '@/app/components/base/logo/magic-studio-logo'
 import WorkplaceSelector from '@/app/components/header/account-dropdown/workplace-selector'
 import { ACCOUNT_SETTING_TAB } from '@/app/components/header/account-setting/constants'
 import { useAppContext } from '@/context/app-context'
@@ -22,9 +22,11 @@ import PluginsNav from './plugins-nav'
 import ToolsNav from './tools-nav'
 
 const navClassName = `
-  flex items-center relative px-3 h-8 rounded-xl
+  flex items-center relative px-3 h-8 rounded-full
+  border border-transparent bg-transparent
   font-medium text-sm
   cursor-pointer
+  transition-all duration-200 hover:border-white/10 hover:bg-white/5
 `
 
 const Header = () => {
@@ -55,7 +57,7 @@ const Header = () => {
                 alt="logo"
               />
             )
-          : <DifyLogo />}
+          : <MagicStudioLogo />}
       </Link>
     </h1>
   )
@@ -90,7 +92,7 @@ const Header = () => {
   }
 
   return (
-    <div className="flex h-[56px] items-center">
+    <div className="flex h-[56px] items-center px-2">
       <div className="flex min-w-0 flex-1 items-center pl-3 pr-2 min-[1280px]:pr-3">
         {renderLogo()}
         <div className="mx-1.5 shrink-0 font-light text-divider-deep">/</div>

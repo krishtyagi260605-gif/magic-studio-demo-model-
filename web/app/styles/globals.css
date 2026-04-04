@@ -261,6 +261,15 @@
   /* border radius end */
 }
 
+@layer base {
+  body {
+    background:
+      radial-gradient(circle at top, rgba(93, 177, 255, 0.1), transparent 26%),
+      radial-gradient(circle at bottom right, rgba(202, 180, 255, 0.08), transparent 24%),
+      linear-gradient(180deg, #08101d 0%, #060b16 38%, #050913 100%);
+  }
+}
+
 @utility code-sm-semibold {
   font-size: 13px;
   font-weight: 600;

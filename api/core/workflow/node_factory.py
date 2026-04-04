@@ -24,8 +24,8 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from configs import magic_studio_config
-from core.app.entities.app_invoke_entities import DIFY_RUN_CONTEXT_KEY, DifyRunContext
-from core.app.llm.model_access import build_dify_model_access, fetch_model_config
+from core.app.entities.app_invoke_entities import MAGIC_STUDIO_RUN_CONTEXT_KEY, MagicStudioRunContext
+from core.app.llm.model_access import build_magic_studio_model_access, fetch_model_config
 from core.helper.code_executor.code_executor import (
     CodeExecutionError,
     CodeExecutor,
@@ -37,14 +37,14 @@ from core.prompt.entities.advanced_prompt_entities import MemoryConfig
 from core.trigger.constants import TRIGGER_NODE_TYPES
 from core.workflow.human_input_compat import normalize_node_config_for_graph
 from core.workflow.node_runtime import (
-    DifyFileReferenceFactory,
-    DifyHumanInputNodeRuntime,
-    DifyPreparedLLM,
-    DifyPromptMessageSerializer,
-    DifyRetrieverAttachmentLoader,
-    DifyToolFileManager,
-    DifyToolNodeRuntime,
-    build_dify_llm_file_saver,
+    MagicStudioFileReferenceFactory,
+    MagicStudioHumanInputNodeRuntime,
+    MagicStudioPreparedLLM,
+    MagicStudioPromptMessageSerializer,
+    MagicStudioRetrieverAttachmentLoader,
+    MagicStudioToolFileManager,
+    MagicStudioToolNodeRuntime,
+    build_magic_studio_llm_file_saver,
 )
 from core.workflow.nodes.a2a.a2a_node import A2ANode
 from core.workflow.nodes.approval.approval_node import ApprovalNode
@@ -234,7 +234,7 @@ class DefaultWorkflowCodeExecutor:
 
 
 @final
-class DifyNodeFactory(NodeFactory):
+class MagicStudioNodeFactory(NodeFactory):
     """
     Default implementation of NodeFactory that resolves node classes from the live registry.
     """
@@ -246,7 +246,7 @@ class DifyNodeFactory(NodeFactory):
     ) -> None:
         self.graph_init_params = graph_init_params
         self.graph_runtime_state = graph_runtime_state
-        self._dify_context = self._resolve_dify_context(graph_init_params.run_context)
+        self._magic_studio_context = self._resolve_magic_studio_context(graph_init_params.run_context)
         self._code_executor: WorkflowCodeExecutor = DefaultWorkflowCodeExecutor()
         self._code_limits = CodeNodeLimits(
             max_string_length=magic_studio_config.CODE_MAX_STRING_LENGTH,
@@ -261,28 +261,28 @@ class DifyNodeFactory(NodeFactory):
         self._jinja2_template_renderer = CodeExecutorJinja2TemplateRenderer()
         self._template_transform_max_output_length = magic_studio_config.TEMPLATE_TRANSFORM_MAX_LENGTH
         self._http_request_http_client = ssrf_proxy
-        self._bound_tool_file_manager_factory = lambda: DifyToolFileManager(
-            self._dify_context,
+        self._bound_tool_file_manager_factory = lambda: MagicStudioToolFileManager(
+            self._magic_studio_context,
             conversation_id_getter=self._conversation_id,
         )
-        self._file_reference_factory = DifyFileReferenceFactory(self._dify_context)
-        self._prompt_message_serializer = DifyPromptMessageSerializer()
-        self._retriever_attachment_loader = DifyRetrieverAttachmentLoader(
+        self._file_reference_factory = MagicStudioFileReferenceFactory(self._magic_studio_context)
+        self._prompt_message_serializer = MagicStudioPromptMessageSerializer()
+        self._retriever_attachment_loader = MagicStudioRetrieverAttachmentLoader(
             file_reference_factory=self._file_reference_factory,
         )
-        self._llm_file_saver = build_dify_llm_file_saver(
-            run_context=self._dify_context,
+        self._llm_file_saver = build_magic_studio_llm_file_saver(
+            run_context=self._magic_studio_context,
             http_client=self._http_request_http_client,
             conversation_id_getter=self._conversation_id,
         )
-        self._human_input_runtime = DifyHumanInputNodeRuntime(
-            self._dify_context,
+        self._human_input_runtime = MagicStudioHumanInputNodeRuntime(
+            self._magic_studio_context,
             workflow_execution_id_getter=lambda: get_system_text(
                 self.graph_runtime_state.variable_pool,
                 SystemVariableKey.WORKFLOW_EXECUTION_ID,
             ),
         )
-        self._tool_runtime = DifyToolNodeRuntime(self._dify_context)
+        self._tool_runtime = MagicStudioToolNodeRuntime(self._magic_studio_context)
         self._http_request_file_manager = file_manager
         self._document_extractor_unstructured_api_config = UnstructuredApiConfig(
             api_url=magic_studio_config.UNSTRUCTURED_API_URL,
@@ -298,20 +298,22 @@ class DifyNodeFactory(NodeFactory):
             ssrf_default_max_retries=magic_studio_config.SSRF_DEFAULT_MAX_RETRIES,
         )
 
-        self._llm_credentials_provider, self._llm_model_factory = build_dify_model_access(self._dify_context)
+        self._llm_credentials_provider, self._llm_model_factory = build_magic_studio_model_access(
+            self._magic_studio_context
+        )
         self._agent_strategy_resolver = PluginAgentStrategyResolver()
         self._agent_strategy_presentation_provider = PluginAgentStrategyPresentationProvider()
         self._agent_runtime_support = AgentRuntimeSupport()
         self._agent_message_transformer = AgentMessageTransformer()
 
     @staticmethod
-    def _resolve_dify_context(run_context: Mapping[str, Any]) -> DifyRunContext:
-        raw_ctx = run_context.get(DIFY_RUN_CONTEXT_KEY)
+    def _resolve_magic_studio_context(run_context: Mapping[str, Any]) -> MagicStudioRunContext:
+        raw_ctx = run_context.get(MAGIC_STUDIO_RUN_CONTEXT_KEY)
         if raw_ctx is None:
-            raise ValueError(f"run_context missing required key: {DIFY_RUN_CONTEXT_KEY}")
-        if isinstance(raw_ctx, DifyRunContext):
+            raise ValueError(f"run_context missing required key: {MAGIC_STUDIO_RUN_CONTEXT_KEY}")
+        if isinstance(raw_ctx, MagicStudioRunContext):
             return raw_ctx
-        return DifyRunContext.model_validate(raw_ctx)
+        return MagicStudioRunContext.model_validate(raw_ctx)
 
     def _conversation_id(self) -> str | None:
         return get_system_text(self.graph_runtime_state.variable_pool, SystemVariableKey.CONVERSATION_ID)
@@ -439,7 +441,7 @@ class DifyNodeFactory(NodeFactory):
         node_init_kwargs: dict[str, object] = {
             "credentials_provider": self._llm_credentials_provider,
             "model_factory": self._llm_model_factory,
-            "model_instance": DifyPreparedLLM(model_instance) if wrap_model_instance else model_instance,
+            "model_instance": MagicStudioPreparedLLM(model_instance) if wrap_model_instance else model_instance,
             "memory": self._build_memory_for_llm_node(
                 node_data=validated_node_data,
                 model_instance=model_instance,
@@ -483,7 +485,7 @@ class DifyNodeFactory(NodeFactory):
         conversation_id = get_system_text(self.graph_runtime_state.variable_pool, SystemVariableKey.CONVERSATION_ID)
         return fetch_memory(
             conversation_id=conversation_id,
-            app_id=self._dify_context.app_id,
+            app_id=self._magic_studio_context.app_id,
             node_data_memory=node_data.memory,
             model_instance=model_instance,
         )

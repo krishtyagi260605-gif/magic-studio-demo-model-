@@ -13,7 +13,7 @@ from graphon.graph_engine.layers import GraphEngineLayer
 from graphon.graph_events import GraphEngineEvent, GraphNodeEventBase, NodeRunSucceededEvent
 from graphon.nodes.base.node import Node
 
-from core.app.entities.app_invoke_entities import DIFY_RUN_CONTEXT_KEY, DifyRunContext
+from core.app.entities.app_invoke_entities import MAGIC_STUDIO_RUN_CONTEXT_KEY, MagicStudioRunContext
 from core.app.llm import deduct_llm_quota, ensure_llm_quota_available
 from core.errors.error import QuotaExceededError
 from core.model_manager import ModelInstance
@@ -74,9 +74,11 @@ class LLMQuotaLayer(GraphEngineLayer):
             return
 
         try:
-            dify_ctx = DifyRunContext.model_validate(node.require_run_context_value(DIFY_RUN_CONTEXT_KEY))
+            magic_studio_ctx = MagicStudioRunContext.model_validate(
+                node.require_run_context_value(MAGIC_STUDIO_RUN_CONTEXT_KEY)
+            )
             deduct_llm_quota(
-                tenant_id=dify_ctx.tenant_id,
+                tenant_id=magic_studio_ctx.tenant_id,
                 model_instance=model_instance,
                 usage=result_event.node_run_result.llm_usage,
             )

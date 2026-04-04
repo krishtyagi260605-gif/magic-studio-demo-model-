@@ -1,22 +1,22 @@
 ![cover-v5-optimized](../../images/GitHub_README_if.png)
 
 <p align="center">
-  📌 <a href="https://dify.ai/blog/introducing-dify-workflow-file-upload-a-demo-on-ai-podcast">Introduzione a Dify Workflow File Upload: ricreando il podcast di Google NotebookLM</a>
+  📌 <a href="https://github.com/krishtyagi260605-gif/magic-studio-demo-model-magic-studio">Introduzione a Magic Studio Workflow File Upload: ricreando il podcast di Google NotebookLM</a>
 </p>
 
 <p align="center">
-  <a href="https://cloud.dify.ai">Dify Cloud</a> ·
-  <a href="https://docs.dify.ai/getting-started/install-self-hosted">Self-Hosted</a> ·
-  <a href="https://docs.dify.ai">Documentazione</a> ·
-  <a href="https://dify.ai/pricing">Panoramica dei prodotti Dify</a>
+  <a href="https://github.com/krishtyagi260605-gif/magic-studio-demo-model-magic-studio">Magic Studio Cloud</a> ·
+  <a href="https://github.com/krishtyagi260605-gif/magic-studio-demo-model-magic-studio">Self-Hosted</a> ·
+  <a href="https://github.com/krishtyagi260605-gif/magic-studio-demo-model-magic-studio">Documentazione</a> ·
+  <a href="https://github.com/krishtyagi260605-gif/magic-studio-demo-model-magic-studio">Panoramica dei prodotti Magic Studio</a>
 </p>
 
 <p align="center">
-    <a href="https://dify.ai" target="_blank">
+    <a href="https://github.com/krishtyagi260605-gif/magic-studio-demo-model-magic-studio" target="_blank">
         <img alt="Static Badge" src="https://img.shields.io/badge/Product-F04438"></a>
-    <a href="https://dify.ai/pricing" target="_blank">
+    <a href="https://github.com/krishtyagi260605-gif/magic-studio-demo-model-magic-studio" target="_blank">
         <img alt="Static Badge" src="https://img.shields.io/badge/free-pricing?logo=free&color=%20%23155EEF&label=pricing&labelColor=%20%23528bff"></a>
-    <a href="https://discord.gg/FngNHpbcY7" target="_blank">
+    <a href="mailto:hello@magicstudio.dev" target="_blank">
         <img src="https://img.shields.io/discord/1082486657678311454?logo=discord&labelColor=%20%235462eb&logoColor=%20%23f5f5f5&color=%20%235462eb"
             alt="chat on Discord"></a>
     <a href="https://reddit.com/r/difyai" target="_blank">  
@@ -29,19 +29,19 @@
         <img src="https://custom-icon-badges.demolab.com/badge/LinkedIn-0A66C2?logo=linkedin-white&logoColor=fff"
             alt="follow on LinkedIn"></a>
     <a href="https://hub.docker.com/u/langgenius" target="_blank">
-        <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/langgenius/dify-web?labelColor=%20%23FDB062&color=%20%23f79009"></a>
-    <a href="https://github.com/langgenius/dify/graphs/commit-activity" target="_blank">
-        <img alt="Commits last month" src="https://img.shields.io/github/commit-activity/m/langgenius/dify?labelColor=%20%2332b583&color=%20%2312b76a"></a>
-    <a href="https://github.com/langgenius/dify/" target="_blank">
+        <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/langgenius/magic-studio-web?labelColor=%20%23FDB062&color=%20%23f79009"></a>
+    <a href="https://github.com/krishtyagi260605-gif/magic-studio-demo-model-magic-studio" target="_blank">
+        <img alt="Commits last month" src="https://img.shields.io/github/commit-activity/m/langgenius/magic-studio?labelColor=%20%2332b583&color=%20%2312b76a"></a>
+    <a href="https://github.com/krishtyagi260605-gif/magic-studio-demo-model-magic-studio/" target="_blank">
         <img alt="Issues closed" src="https://img.shields.io/github/issues-search?query=repo%3Alanggenius%2Fdify%20is%3Aclosed&label=issues%20closed&labelColor=%20%237d89b0&color=%20%235d6b98"></a>
-    <a href="https://github.com/langgenius/dify/discussions/" target="_blank">
-        <img alt="Discussion posts" src="https://img.shields.io/github/discussions/langgenius/dify?labelColor=%20%239b8afb&color=%20%237a5af8"></a>
-    <a href="https://insights.linuxfoundation.org/project/langgenius-dify" target="_blank">
-        <img alt="LFX Health Score" src="https://insights.linuxfoundation.org/api/badge/health-score?project=langgenius-dify"></a>
-    <a href="https://insights.linuxfoundation.org/project/langgenius-dify" target="_blank">
-        <img alt="LFX Contributors" src="https://insights.linuxfoundation.org/api/badge/contributors?project=langgenius-dify"></a>
-    <a href="https://insights.linuxfoundation.org/project/langgenius-dify" target="_blank">
-        <img alt="LFX Active Contributors" src="https://insights.linuxfoundation.org/api/badge/active-contributors?project=langgenius-dify"></a>
+    <a href="https://github.com/krishtyagi260605-gif/magic-studio-demo-model-magic-studio" target="_blank">
+        <img alt="Discussion posts" src="https://img.shields.io/github/discussions/langgenius/magic-studio?labelColor=%20%239b8afb&color=%20%237a5af8"></a>
+    <a href="https://insights.linuxfoundation.org/project/langgenius-magic-studio" target="_blank">
+        <img alt="LFX Health Score" src="https://insights.linuxfoundation.org/api/badge/health-score?project=langgenius-magic-studio"></a>
+    <a href="https://insights.linuxfoundation.org/project/langgenius-magic-studio" target="_blank">
+        <img alt="LFX Contributors" src="https://insights.linuxfoundation.org/api/badge/contributors?project=langgenius-magic-studio"></a>
+    <a href="https://insights.linuxfoundation.org/project/langgenius-magic-studio" target="_blank">
+        <img alt="LFX Active Contributors" src="https://insights.linuxfoundation.org/api/badge/active-contributors?project=langgenius-magic-studio"></a>
 </p>
 
 <p align="center">
@@ -64,33 +64,33 @@
   <a href="../hi-IN/README.md"><img alt="README in हिन्दी" src="https://img.shields.io/badge/Hindi-d9d9d9"></a>
 </p>
 
-Dify è una piattaforma open-source per lo sviluppo di applicazioni LLM. La sua interfaccia intuitiva combina flussi di lavoro AI basati su agenti, pipeline RAG, funzionalità di agenti, gestione dei modelli, funzionalità di monitoraggio e altro ancora, permettendovi di passare rapidamente da un prototipo alla produzione.
+Magic Studio è una piattaforma open-source per lo sviluppo di applicazioni LLM. La sua interfaccia intuitiva combina flussi di lavoro AI basati su agenti, pipeline RAG, funzionalità di agenti, gestione dei modelli, funzionalità di monitoraggio e altro ancora, permettendovi di passare rapidamente da un prototipo alla produzione.
 
 ## Avvio Rapido
 
-> Prima di installare Dify, assicuratevi che il vostro sistema soddisfi i seguenti requisiti minimi:
+> Prima di installare Magic Studio, assicuratevi che il vostro sistema soddisfi i seguenti requisiti minimi:
 >
 > - CPU >= 2 Core
 > - RAM >= 4 GiB
 
 <br/>
 
-Il modo più semplice per avviare il server Dify è tramite [docker compose](../../docker/docker-compose.yaml). Prima di eseguire Dify con i seguenti comandi, assicuratevi che [Docker](https://docs.docker.com/get-docker/) e [Docker Compose](https://docs.docker.com/compose/install/) siano installati sul vostro sistema:
+Il modo più semplice per avviare il server Magic Studio è tramite [docker compose](../../docker/docker-compose.yaml). Prima di eseguire Magic Studio con i seguenti comandi, assicuratevi che [Docker](https://docs.docker.com/get-docker/) e [Docker Compose](https://docs.docker.com/compose/install/) siano installati sul vostro sistema:
 
 ```bash
-cd dify
+cd magic-studio
 cd docker
 cp .env.example .env
 docker compose up -d
 ```
 
-Dopo aver avviato il server, potete accedere al dashboard di Dify tramite il vostro browser all'indirizzo [http://localhost/install](http://localhost/install) e avviare il processo di inizializzazione.
+Dopo aver avviato il server, potete accedere al dashboard di Magic Studio tramite il vostro browser all'indirizzo [http://localhost/install](http://localhost/install) e avviare il processo di inizializzazione.
 
 #### Richiedere Aiuto
 
-Consultate le nostre [FAQ](https://docs.dify.ai/getting-started/install-self-hosted/faqs) se riscontrate problemi durante la configurazione di Dify. Contattateci [tramite la community](#community--contatti) se continuano a verificarsi difficoltà.
+Consultate le nostre [FAQ](https://github.com/krishtyagi260605-gif/magic-studio-demo-model-magic-studio) se riscontrate problemi durante la configurazione di Magic Studio. Contattateci [tramite la community](#community--contatti) se continuano a verificarsi difficoltà.
 
-> Se desiderate contribuire a Dify o effettuare ulteriori sviluppi, consultate la nostra [guida al deployment dal codice sorgente](https://docs.dify.ai/getting-started/install-self-hosted/local-source-code).
+> Se desiderate contribuire a Magic Studio o effettuare ulteriori sviluppi, consultate la nostra [guida al deployment dal codice sorgente](https://github.com/krishtyagi260605-gif/magic-studio-demo-model-magic-studio).
 
 ## Caratteristiche Principali
 
@@ -98,9 +98,9 @@ Consultate le nostre [FAQ](https://docs.dify.ai/getting-started/install-self-hos
 Create e testate potenti flussi di lavoro AI su un'interfaccia visuale, utilizzando tutte le funzionalità seguenti e oltre.
 
 **2. Supporto Completo dei Modelli**:
-Integrazione perfetta con centinaia di LLM proprietari e open-source di decine di provider di inferenza e soluzioni self-hosted, che coprono GPT, Mistral, Llama3 e tutti i modelli compatibili con l'API OpenAI. L'elenco completo dei provider di modelli supportati è disponibile [qui](https://docs.dify.ai/getting-started/readme/model-providers).
+Integrazione perfetta con centinaia di LLM proprietari e open-source di decine di provider di inferenza e soluzioni self-hosted, che coprono GPT, Mistral, Llama3 e tutti i modelli compatibili con l'API OpenAI. L'elenco completo dei provider di modelli supportati è disponibile [qui](https://github.com/krishtyagi260605-gif/magic-studio-demo-model-magic-studio).
 
-![providers-v5](https://github.com/langgenius/dify/assets/13230914/5a17bdbe-097a-4100-8363-40255b70f6e3)
+![providers-v5](https://github.com/krishtyagi260605-gif/magic-studio-demo-model-magic-studio/assets/13230914/5a17bdbe-097a-4100-8363-40255b70f6e3)
 
 **3. Prompt IDE**:
 Interfaccia intuitiva per creare prompt, confrontare le prestazioni dei modelli e aggiungere funzionalità aggiuntive come text-to-speech in un'applicazione basata su chat.
@@ -109,114 +109,114 @@ Interfaccia intuitiva per creare prompt, confrontare le prestazioni dei modelli 
 Funzionalità RAG complete che coprono tutto, dall'acquisizione dei documenti alla loro interrogazione, con supporto pronto all'uso per l'estrazione di testo da PDF, PPT e altri formati di documenti comuni.
 
 **5. Capacità degli Agenti**:
-Potete definire agenti basati su LLM Function Calling o ReAct e aggiungere strumenti predefiniti o personalizzati per l'agente. Dify fornisce oltre 50 strumenti integrati per gli agenti AI, come Google Search, DALL·E, Stable Diffusion e WolframAlpha.
+Potete definire agenti basati su LLM Function Calling o ReAct e aggiungere strumenti predefiniti o personalizzati per l'agente. Magic Studio fornisce oltre 50 strumenti integrati per gli agenti AI, come Google Search, DALL·E, Stable Diffusion e WolframAlpha.
 
 **6. LLMOps**:
 Monitorate e analizzate i log delle applicazioni e le prestazioni nel tempo. Potete migliorare continuamente prompt, dataset e modelli basandovi sui dati di produzione e sulle annotazioni.
 
 **7. Backend-as-a-Service**:
-Tutte le offerte di Dify sono dotate di API corrispondenti, permettendovi di integrare facilmente Dify nella vostra logica di business.
+Tutte le offerte di Magic Studio sono dotate di API corrispondenti, permettendovi di integrare facilmente Magic Studio nella vostra logica di business.
 
-## Utilizzo di Dify
+## Utilizzo di Magic Studio
 
 - **Cloud <br/>**
-  Ospitiamo un servizio [Dify Cloud](https://dify.ai) che chiunque può provare senza configurazione. Offre tutte le funzionalità della versione self-hosted e include 200 chiamate GPT-4 gratuite nel piano sandbox.
+  Ospitiamo un servizio [Magic Studio Cloud](https://github.com/krishtyagi260605-gif/magic-studio-demo-model-magic-studio) che chiunque può provare senza configurazione. Offre tutte le funzionalità della versione self-hosted e include 200 chiamate GPT-4 gratuite nel piano sandbox.
 
-- **Dify Community Edition Self-Hosted<br/>**
-  Avviate rapidamente Dify nel vostro ambiente con questa [guida di avvio rapido](#avvio-rapido). Utilizzate la nostra [documentazione](https://docs.dify.ai) per ulteriori informazioni e istruzioni dettagliate.
+- **Magic Studio Community Edition Self-Hosted<br/>**
+  Avviate rapidamente Magic Studio nel vostro ambiente con questa [guida di avvio rapido](#avvio-rapido). Utilizzate la nostra [documentazione](https://github.com/krishtyagi260605-gif/magic-studio-demo-model-magic-studio) per ulteriori informazioni e istruzioni dettagliate.
 
-- **Dify per Aziende / Organizzazioni<br/>**
-  Offriamo funzionalità aggiuntive specifiche per le aziende. Potete [scriverci via email](mailto:business@dify.ai?subject=%5BGitHub%5DBusiness%20License%20Inquiry) per discutere le vostre esigenze aziendali. <br/>
+- **Magic Studio per Aziende / Organizzazioni<br/>**
+  Offriamo funzionalità aggiuntive specifiche per le aziende. Potete [scriverci via email](mailto:hello@magicstudio.dev?subject=%5BGitHub%5DBusiness%20License%20Inquiry) per discutere le vostre esigenze aziendali. <br/>
 
-  > Per startup e piccole imprese che utilizzano AWS, date un'occhiata a [Dify Premium su AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-t22mebxzwjhu6) e distribuitelo con un solo clic nel vostro AWS VPC. Si tratta di un'offerta AMI conveniente con l'opzione di creare app con logo e branding personalizzati.
+  > Per startup e piccole imprese che utilizzano AWS, date un'occhiata a [Magic Studio Premium su AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-t22mebxzwjhu6) e distribuitelo con un solo clic nel vostro AWS VPC. Si tratta di un'offerta AMI conveniente con l'opzione di creare app con logo e branding personalizzati.
 
 ## Resta Sempre Aggiornato
 
-Mettete una stella a Dify su GitHub e ricevete notifiche immediate sui nuovi rilasci.
+Mettete una stella a Magic Studio su GitHub e ricevete notifiche immediate sui nuovi rilasci.
 
-![star-us](https://github.com/langgenius/dify/assets/13230914/b823edc1-6388-4e25-ad45-2f6b187adbb4)
+![star-us](https://github.com/krishtyagi260605-gif/magic-studio-demo-model-magic-studio/assets/13230914/b823edc1-6388-4e25-ad45-2f6b187adbb4)
 
 ## Configurazioni Avanzate
 
-Se dovete personalizzare la configurazione, leggete i commenti nel nostro file [.env.example](../../docker/.env.example) e aggiornate i valori corrispondenti nel vostro file `.env`. Inoltre, potrebbe essere necessario apportare modifiche al file `docker-compose.yaml`, come cambiare le versioni delle immagini, le mappature delle porte o i mount dei volumi, a seconda del vostro ambiente di distribuzione specifico e dei vostri requisiti. Dopo aver apportato le modifiche, riavviate `docker-compose up -d`. L'elenco completo delle variabili d'ambiente disponibili è disponibile [qui](https://docs.dify.ai/getting-started/install-self-hosted/environments).
+Se dovete personalizzare la configurazione, leggete i commenti nel nostro file [.env.example](../../docker/.env.example) e aggiornate i valori corrispondenti nel vostro file `.env`. Inoltre, potrebbe essere necessario apportare modifiche al file `docker-compose.yaml`, come cambiare le versioni delle immagini, le mappature delle porte o i mount dei volumi, a seconda del vostro ambiente di distribuzione specifico e dei vostri requisiti. Dopo aver apportato le modifiche, riavviate `docker-compose up -d`. L'elenco completo delle variabili d'ambiente disponibili è disponibile [qui](https://github.com/krishtyagi260605-gif/magic-studio-demo-model-magic-studio).
 
 ### Monitoraggio delle Metriche con Grafana
 
-Importate la dashboard in Grafana, utilizzando il database PostgreSQL di Dify come origine dati, per monitorare le metriche a livello di app, tenant, messaggi e altro ancora.
+Importate la dashboard in Grafana, utilizzando il database PostgreSQL di Magic Studio come origine dati, per monitorare le metriche a livello di app, tenant, messaggi e altro ancora.
 
-- [Dashboard Grafana di @bowenliang123](https://github.com/bowenliang123/dify-grafana-dashboard)
+- [Dashboard Grafana di @bowenliang123](https://github.com/bowenliang123/magic-studio-grafana-dashboard)
 
 ### Distribuzione con Kubernetes
 
-Se desiderate configurare un'installazione ad alta disponibilità, ci sono [Helm Charts](https://helm.sh/) e file YAML forniti dalla community che consentono di distribuire Dify su Kubernetes.
+Se desiderate configurare un'installazione ad alta disponibilità, ci sono [Helm Charts](https://helm.sh/) e file YAML forniti dalla community che consentono di distribuire Magic Studio su Kubernetes.
 
-- [Helm Chart di @LeoQuote](https://github.com/douban/charts/tree/master/charts/dify)
-- [Helm Chart di @BorisPolonsky](https://github.com/BorisPolonsky/dify-helm)
+- [Helm Chart di @LeoQuote](https://github.com/douban/charts/tree/master/charts/magic-studio)
+- [Helm Chart di @BorisPolonsky](https://github.com/BorisPolonsky/magic-studio-helm)
 - [Helm Chart di @magicsong](https://github.com/magicsong/ai-charts)
-- [File YAML di @Winson-030](https://github.com/Winson-030/dify-kubernetes)
-- [File YAML di @wyy-holding](https://github.com/wyy-holding/dify-k8s)
-- [🚀 NUOVO! File YAML (Supporta Dify v1.6.0) di @Zhoneym](https://github.com/Zhoneym/DifyAI-Kubernetes)
+- [File YAML di @Winson-030](https://github.com/Winson-030/magic-studio-kubernetes)
+- [File YAML di @wyy-holding](https://github.com/wyy-holding/magic-studio-k8s)
+- [🚀 NUOVO! File YAML (Supporta Magic Studio v1.6.0) di @Zhoneym](https://github.com/Zhoneym/DifyAI-Kubernetes)
 
 #### Utilizzo di Terraform per la Distribuzione
 
-Distribuite Dify con un solo clic su una piattaforma cloud utilizzando [terraform](https://www.terraform.io/).
+Distribuite Magic Studio con un solo clic su una piattaforma cloud utilizzando [terraform](https://www.terraform.io/).
 
 ##### Azure Global
 
-- [Azure Terraform di @nikawang](https://github.com/nikawang/dify-azure-terraform)
+- [Azure Terraform di @nikawang](https://github.com/nikawang/magic-studio-azure-terraform)
 
 ##### Google Cloud
 
-- [Google Cloud Terraform di @sotazum](https://github.com/DeNA/dify-google-cloud-terraform)
+- [Google Cloud Terraform di @sotazum](https://github.com/DeNA/magic-studio-google-cloud-terraform)
 
 #### Utilizzo di AWS CDK per la Distribuzione
 
-Distribuzione di Dify su AWS con [CDK](https://aws.amazon.com/cdk/)
+Distribuzione di Magic Studio su AWS con [CDK](https://aws.amazon.com/cdk/)
 
 ##### AWS
 
-- [AWS CDK di @KevinZhao (basato su EKS)](https://github.com/aws-samples/solution-for-deploying-dify-on-aws)
-- [AWS CDK di @tmokmss (basato su ECS)](https://github.com/aws-samples/dify-self-hosted-on-aws)
+- [AWS CDK di @KevinZhao (basato su EKS)](https://github.com/aws-samples/solution-for-deploying-magic-studio-on-aws)
+- [AWS CDK di @tmokmss (basato su ECS)](https://github.com/aws-samples/magic-studio-self-hosted-on-aws)
 
 #### Alibaba Cloud
 
-[Alibaba Cloud Computing Nest](https://computenest.console.aliyun.com/service/instance/create/default?type=user&ServiceName=Dify%E7%A4%BE%E5%8C%BA%E7%89%88)
+[Alibaba Cloud Computing Nest](https://computenest.console.aliyun.com/service/instance/create/default?type=user&ServiceName=Magic Studio%E7%A4%BE%E5%8C%BA%E7%89%88)
 
 #### Alibaba Cloud Data Management
 
-Distribuzione con un clic di Dify su Alibaba Cloud con [Alibaba Cloud Data Management](https://www.alibabacloud.com/help/en/dms/dify-in-invitational-preview/)
+Distribuzione con un clic di Magic Studio su Alibaba Cloud con [Alibaba Cloud Data Management](https://www.alibabacloud.com/help/en/dms/magic-studio-in-invitational-preview/)
 
 #### Utilizzo di Azure DevOps Pipeline per la Distribuzione su AKS
 
-Distribuite Dify con un clic in AKS utilizzando [Azure DevOps Pipeline Helm Chart di @LeoZhang](https://github.com/Ruiruiz30/Dify-helm-chart-AKS)
+Distribuite Magic Studio con un clic in AKS utilizzando [Azure DevOps Pipeline Helm Chart di @LeoZhang](https://github.com/Ruiruiz30/Magic Studio-helm-chart-AKS)
 
 ## Contribuire
 
-Se desiderate contribuire con codice, leggete la nostra [Guida ai Contributi](../../CONTRIBUTING.md). Allo stesso tempo, vi chiediamo di supportare Dify condividendolo sui social media e presentandolo a eventi e conferenze.
+Se desiderate contribuire con codice, leggete la nostra [Guida ai Contributi](../../CONTRIBUTING.md). Allo stesso tempo, vi chiediamo di supportare Magic Studio condividendolo sui social media e presentandolo a eventi e conferenze.
 
-> Cerchiamo collaboratori che aiutino a tradurre Dify in altre lingue oltre al mandarino o all'inglese. Se siete interessati a collaborare, leggete il [README i18n](https://github.com/langgenius/dify/blob/main/web/i18n-config/README.md) per ulteriori informazioni e lasciate un commento nel canale `global-users` del nostro [server della community Discord](https://discord.gg/8Tpq4AcN9c).
+> Cerchiamo collaboratori che aiutino a tradurre Magic Studio in altre lingue oltre al mandarino o all'inglese. Se siete interessati a collaborare, leggete il [README i18n](https://github.com/krishtyagi260605-gif/magic-studio-demo-model-magic-studio/blob/main/web/i18n-config/README.md) per ulteriori informazioni e lasciate un commento nel canale `global-users` del nostro [server della community Discord](mailto:hello@magicstudio.dev).
 
 ## Community & Contatti
 
-- [GitHub Discussion](https://github.com/langgenius/dify/discussions). Ideale per: condividere feedback e porre domande.
-- [GitHub Issues](https://github.com/langgenius/dify/issues). Ideale per: bug che riscontrate durante l'utilizzo di Dify.AI e proposte di funzionalità. Consultate la nostra [Guida ai Contributi](../../CONTRIBUTING.md).
-- [Discord](https://discord.gg/FngNHpbcY7). Ideale per: condividere le vostre applicazioni e interagire con la community.
+- [GitHub Discussion](https://github.com/krishtyagi260605-gif/magic-studio-demo-model-magic-studio). Ideale per: condividere feedback e porre domande.
+- [GitHub Issues](https://github.com/krishtyagi260605-gif/magic-studio-demo-model-magic-studio/issues). Ideale per: bug che riscontrate durante l'utilizzo di Magic Studio.AI e proposte di funzionalità. Consultate la nostra [Guida ai Contributi](../../CONTRIBUTING.md).
+- [Discord](mailto:hello@magicstudio.dev). Ideale per: condividere le vostre applicazioni e interagire con la community.
 - [X(Twitter)](https://twitter.com/dify_ai). Ideale per: condividere le vostre applicazioni e interagire con la community.
 
 **Collaboratori**
 
-<a href="https://github.com/langgenius/dify/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=langgenius/dify" />
+<a href="https://github.com/krishtyagi260605-gif/magic-studio-demo-model-magic-studio/graphs/contributors">
+  <img src="https://github.com/krishtyagi260605-gif/magic-studio-demo-model-magic-studio" />
 </a>
 
 ## Storia delle Stelle
 
-[![Star History Chart](https://api.star-history.com/svg?repos=langgenius/dify&type=Date)](https://star-history.com/#langgenius/dify&Date)
+[![Star History Chart](https://github.com/krishtyagi260605-gif/magic-studio-demo-model-magic-studio)](https://github.com/krishtyagi260605-gif/magic-studio-demo-model-magic-studio)
 
 ## Divulgazione sulla Sicurezza
 
-Per proteggere la vostra privacy, evitate di pubblicare problemi di sicurezza su GitHub. Inviate invece le vostre domande a security@dify.ai e vi forniremo una risposta più dettagliata.
+Per proteggere la vostra privacy, evitate di pubblicare problemi di sicurezza su GitHub. Inviate invece le vostre domande a hello@magicstudio.dev e vi forniremo una risposta più dettagliata.
 
 ## Licenza
 
-Questo repository è disponibile sotto la [Dify Open Source License](../../LICENSE), che è essenzialmente Apache 2.0 con alcune restrizioni aggiuntive.
+Questo repository è disponibile sotto la [Magic Studio Open Source License](../../LICENSE), che è essenzialmente Apache 2.0 con alcune restrizioni aggiuntive.

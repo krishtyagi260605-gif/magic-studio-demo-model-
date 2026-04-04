@@ -186,9 +186,9 @@ class EnterpriseMetricHandler:
                 event_name=EnterpriseTelemetryEvent.REHYDRATION_FAILED,
                 attributes={
                     "tenant_id": envelope.tenant_id,
-                    "dify.telemetry.error": f"Payload rehydration failed for event_id={envelope.event_id}",
-                    "dify.telemetry.payload_type": envelope.case,
-                    "dify.telemetry.correlation_id": envelope.event_id,
+                    "magicstudio.telemetry.error": f"Payload rehydration failed for event_id={envelope.event_id}",
+                    "magicstudio.telemetry.payload_type": envelope.case,
+                    "magicstudio.telemetry.correlation_id": envelope.event_id,
                 },
                 tenant_id=envelope.tenant_id,
             )
@@ -216,11 +216,11 @@ class EnterpriseMetricHandler:
             return
 
         attrs = {
-            "dify.app_id": payload.get("app_id"),
-            "dify.tenant_id": envelope.tenant_id,
-            "dify.event.id": envelope.event_id,
-            "dify.app.mode": payload.get("mode"),
-            "dify.app.created_at": datetime.now(UTC).isoformat(),
+            "magicstudio.app_id": payload.get("app_id"),
+            "magicstudio.tenant_id": envelope.tenant_id,
+            "magicstudio.event.id": envelope.event_id,
+            "magicstudio.app.mode": payload.get("mode"),
+            "magicstudio.app.created_at": datetime.now(UTC).isoformat(),
         }
 
         emit_metric_only_event(
@@ -254,10 +254,10 @@ class EnterpriseMetricHandler:
             return
 
         attrs = {
-            "dify.app_id": payload.get("app_id"),
-            "dify.tenant_id": envelope.tenant_id,
-            "dify.event.id": envelope.event_id,
-            "dify.app.updated_at": datetime.now(UTC).isoformat(),
+            "magicstudio.app_id": payload.get("app_id"),
+            "magicstudio.tenant_id": envelope.tenant_id,
+            "magicstudio.event.id": envelope.event_id,
+            "magicstudio.app.updated_at": datetime.now(UTC).isoformat(),
         }
 
         emit_metric_only_event(
@@ -290,10 +290,10 @@ class EnterpriseMetricHandler:
             return
 
         attrs = {
-            "dify.app_id": payload.get("app_id"),
-            "dify.tenant_id": envelope.tenant_id,
-            "dify.event.id": envelope.event_id,
-            "dify.app.deleted_at": datetime.now(UTC).isoformat(),
+            "magicstudio.app_id": payload.get("app_id"),
+            "magicstudio.tenant_id": envelope.tenant_id,
+            "magicstudio.event.id": envelope.event_id,
+            "magicstudio.app.deleted_at": datetime.now(UTC).isoformat(),
         }
 
         emit_metric_only_event(
@@ -327,18 +327,18 @@ class EnterpriseMetricHandler:
 
         include_content = exporter.include_content
         attrs: dict = {
-            "dify.message.id": payload.get("message_id"),
-            "dify.tenant_id": envelope.tenant_id,
-            "dify.event.id": envelope.event_id,
-            "dify.app_id": payload.get("app_id"),
-            "dify.conversation.id": payload.get("conversation_id"),
+            "magicstudio.message.id": payload.get("message_id"),
+            "magicstudio.tenant_id": envelope.tenant_id,
+            "magicstudio.event.id": envelope.event_id,
+            "magicstudio.app_id": payload.get("app_id"),
+            "magicstudio.conversation.id": payload.get("conversation_id"),
             "gen_ai.user.id": payload.get("from_end_user_id") or payload.get("from_account_id"),
-            "dify.feedback.rating": payload.get("rating"),
-            "dify.feedback.from_source": payload.get("from_source"),
-            "dify.feedback.created_at": datetime.now(UTC).isoformat(),
+            "magicstudio.feedback.rating": payload.get("rating"),
+            "magicstudio.feedback.from_source": payload.get("from_source"),
+            "magicstudio.feedback.created_at": datetime.now(UTC).isoformat(),
         }
         if include_content:
-            attrs["dify.feedback.content"] = payload.get("content")
+            attrs["magicstudio.feedback.content"] = payload.get("content")
 
         user_id = payload.get("from_end_user_id") or payload.get("from_account_id")
         emit_metric_only_event(

@@ -24,5 +24,6 @@ SOFTWARE.
 
 ## Credits
 
-Magic Studio is built upon the Dify open-source project (https://github.com/langgenius/dify),
-originally created by LangGenius, Inc. under the Apache License 2.0 with additional conditions.
+Magic Studio includes work derived from the original Dify open-source project.
+
+This fork is maintained by Krish Tyagi and rebranded as Magic Studio.

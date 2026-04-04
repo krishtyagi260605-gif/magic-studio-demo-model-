@@ -20,10 +20,10 @@ from services.account_service import AccountService
 type LoginUser = Account | EndUser
 
 
-class DifyLoginManager(flask_login.LoginManager):
+class MagicStudioLoginManager(flask_login.LoginManager):
     """Project-specific Flask-Login manager with a stable unauthorized contract.
 
-    Dify registers `unauthorized_handler` below to always return a JSON `Response`.
+    Magic Studio registers `unauthorized_handler` below to always return a JSON `Response`.
     Overriding this method lets callers rely on that narrower return type instead of
     Flask-Login's broader callback contract.
     """
@@ -37,7 +37,7 @@ class DifyLoginManager(flask_login.LoginManager):
         self._load_user()
 
 
-login_manager = DifyLoginManager()
+login_manager = MagicStudioLoginManager()
 
 
 # Flask-Login configuration
@@ -141,7 +141,7 @@ def on_user_logged_in(_sender: object, user: LoginUser) -> None:
 @login_manager.unauthorized_handler
 def unauthorized_handler() -> Response:
     """Handle unauthorized requests."""
-    # Keep this as a concrete `Response`; `DifyLoginManager.unauthorized()` narrows
+    # Keep this as a concrete `Response`; `MagicStudioLoginManager.unauthorized()` narrows
     # Flask-Login's callback contract based on this override.
     return Response(
         json.dumps({"code": "unauthorized", "message": "Unauthorized."}),

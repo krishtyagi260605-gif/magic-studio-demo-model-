@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next'
 import Button from '@/app/components/base/button'
 import { LinkExternal02 } from '@/app/components/base/icons/src/vender/line/general'
 import { ACCOUNT_SETTING_TAB } from '@/app/components/header/account-setting/constants'
+import { BRAND_REPO_URL } from '@/constants/brand'
 import { IS_CE_EDITION } from '@/config'
 import { useModalContext } from '@/context/modal-context'
 import { useProviderContext } from '@/context/provider-context'
@@ -57,7 +58,7 @@ const APIKeyInfoPanel: FC = () => {
       {!isCloud && (
         <a
           className="mt-2 flex h-[26px] items-center space-x-1  p-1 text-xs font-medium text-[#155EEF]"
-          href="https://cloud.dify.ai/apps"
+          href={BRAND_REPO_URL}
           target="_blank"
           rel="noopener noreferrer"
         >

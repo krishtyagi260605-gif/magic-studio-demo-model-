@@ -1,1 +1,11 @@
-export const LICENSE_LINK = 'https://github.com/langgenius/dify?tab=License-1-ov-file#readme'
+import {
+  BRAND_LICENSE_URL,
+  BRAND_PRIVACY_URL,
+  BRAND_REPO_URL,
+  BRAND_TERMS_URL,
+} from './brand'
+
+export const LICENSE_LINK = BRAND_LICENSE_URL
+export const PRIVACY_POLICY_LINK = BRAND_PRIVACY_URL
+export const TERMS_OF_SERVICE_LINK = BRAND_TERMS_URL
+export const REPOSITORY_LINK = BRAND_REPO_URL

@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import Button from '@/app/components/base/button'
 import Input from '@/app/components/base/input'
 import { toast } from '@/app/components/base/ui/toast'
+import { BRAND_PRIVACY_URL, BRAND_TERMS_URL } from '@/constants/brand'
 import Split from '@/app/signin/split'
 import { emailRegex } from '@/config'
 import { useGlobalPublicStore } from '@/context/global-public-context'
@@ -96,7 +97,7 @@ export default function Form({
               className="system-xs-medium text-text-secondary hover:underline"
               target="_blank"
               rel="noopener noreferrer"
-              href="https://dify.ai/terms"
+              href={BRAND_TERMS_URL}
             >
               {t('tos', { ns: 'login' })}
             </Link>
@@ -105,7 +106,7 @@ export default function Form({
               className="system-xs-medium text-text-secondary hover:underline"
               target="_blank"
               rel="noopener noreferrer"
-              href="https://dify.ai/privacy"
+              href={BRAND_PRIVACY_URL}
             >
               {t('pp', { ns: 'login' })}
             </Link>

@@ -26,7 +26,7 @@ def batch_fetch_plugin_manifests(plugin_ids: list[str]) -> Sequence[MarketplaceP
         return []
 
     url = str(marketplace_api_url / "api/v1/plugins/batch")
-    response = httpx.post(url, json={"plugin_ids": plugin_ids}, headers={"X-Dify-Version": magic_studio_config.project.version})
+    response = httpx.post(url, json={"plugin_ids": plugin_ids}, headers={"X-Magic-Studio-Version": magic_studio_config.project.version})
     response.raise_for_status()
 
     return [MarketplacePluginDeclaration.model_validate(plugin) for plugin in response.json()["data"]["plugins"]]
@@ -37,7 +37,7 @@ def batch_fetch_plugin_by_ids(plugin_ids: list[str]) -> list[dict]:
         return []
 
     url = str(marketplace_api_url / "api/v1/plugins/batch")
-    response = httpx.post(url, json={"plugin_ids": plugin_ids}, headers={"X-Dify-Version": magic_studio_config.project.version})
+    response = httpx.post(url, json={"plugin_ids": plugin_ids}, headers={"X-Magic-Studio-Version": magic_studio_config.project.version})
     response.raise_for_status()
 
     data = response.json()
@@ -64,7 +64,7 @@ def fetch_global_plugin_manifest(cache_key_prefix: str, cache_ttl: int) -> None:
         Exception: If any other error occurs during fetching or caching
     """
     url = str(marketplace_api_url / "api/v1/dist/plugins/manifest.json")
-    response = httpx.get(url, headers={"X-Dify-Version": magic_studio_config.project.version}, timeout=30)
+    response = httpx.get(url, headers={"X-Magic-Studio-Version": magic_studio_config.project.version}, timeout=30)
     response.raise_for_status()
 
     raw_json = response.json()

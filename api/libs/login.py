@@ -10,7 +10,7 @@ from werkzeug.local import LocalProxy
 
 from configs import magic_studio_config
 from magic_studio_app import MagicStudioApp
-from extensions.ext_login import DifyLoginManager
+from extensions.ext_login import MagicStudioLoginManager
 from libs.token import check_csrf_token
 from models import Account
 
@@ -29,8 +29,8 @@ def _resolve_current_user() -> EndUser | Account | None:
     return get_current_object() if callable(get_current_object) else user_proxy  # type: ignore
 
 
-def _get_login_manager() -> DifyLoginManager:
-    """Return the project login manager with Dify's narrowed unauthorized contract."""
+def _get_login_manager() -> MagicStudioLoginManager:
+    """Return the project login manager with Magic Studio's narrowed unauthorized contract."""
     app = cast(MagicStudioApp, current_app)
     return app.login_manager
 
@@ -89,7 +89,7 @@ def login_required[**P, R](func: Callable[P, R]) -> Callable[P, R | Response]:
 
         user = _resolve_current_user()
         if user is None or not user.is_authenticated:
-            # `DifyLoginManager` guarantees that the registered unauthorized handler
+            # `MagicStudioLoginManager` guarantees that the registered unauthorized handler
             # is surfaced here as a concrete Flask `Response`.
             unauthorized_response: Response = _get_login_manager().unauthorized()
             return unauthorized_response

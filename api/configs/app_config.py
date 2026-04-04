@@ -71,7 +71,7 @@ class MagicStudioConfig(
     # Remote source configs
     RemoteSettingsSourceConfig,
     # Enterprise feature configs
-    # **Before using, please contact business@dify.ai by email to inquire about licensing matters.**
+    # **Before using, please contact hello@magicstudio.dev by email to inquire about licensing matters.**
     EnterpriseFeatureConfig,
     # Enterprise telemetry configs
     EnterpriseTelemetryConfig,

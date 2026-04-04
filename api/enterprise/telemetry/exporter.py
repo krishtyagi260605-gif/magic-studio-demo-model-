@@ -107,7 +107,7 @@ class EnterpriseExporter:
         endpoint: str = getattr(config, "ENTERPRISE_OTLP_ENDPOINT", "")
         headers_raw: str = getattr(config, "ENTERPRISE_OTLP_HEADERS", "")
         protocol: str = (getattr(config, "ENTERPRISE_OTLP_PROTOCOL", "http") or "http").lower()
-        service_name: str = getattr(config, "ENTERPRISE_SERVICE_NAME", "dify")
+        service_name: str = getattr(config, "ENTERPRISE_SERVICE_NAME", "magicstudio")
         sampling_rate: float = getattr(config, "ENTERPRISE_OTEL_SAMPLING_RATE", 1.0)
         self.include_content: bool = getattr(config, "ENTERPRISE_INCLUDE_CONTENT", True)
         api_key: str = getattr(config, "ENTERPRISE_OTLP_API_KEY", "")
@@ -137,38 +137,38 @@ class EnterpriseExporter:
 
         trace_exporter = factory.create_trace_exporter()
         self._tracer_provider.add_span_processor(BatchSpanProcessor(trace_exporter))
-        self._tracer = self._tracer_provider.get_tracer("dify.enterprise")
+        self._tracer = self._tracer_provider.get_tracer("magicstudio.enterprise")
 
         metric_exporter = factory.create_metric_exporter()
         self._meter_provider = MeterProvider(
             resource=resource,
             metric_readers=[PeriodicExportingMetricReader(metric_exporter)],
         )
-        meter = self._meter_provider.get_meter("dify.enterprise")
+        meter = self._meter_provider.get_meter("magicstudio.enterprise")
         self._counters = {
-            EnterpriseTelemetryCounter.TOKENS: meter.create_counter("dify.tokens.total", unit="{token}"),
-            EnterpriseTelemetryCounter.INPUT_TOKENS: meter.create_counter("dify.tokens.input", unit="{token}"),
-            EnterpriseTelemetryCounter.OUTPUT_TOKENS: meter.create_counter("dify.tokens.output", unit="{token}"),
-            EnterpriseTelemetryCounter.REQUESTS: meter.create_counter("dify.requests.total", unit="{request}"),
-            EnterpriseTelemetryCounter.ERRORS: meter.create_counter("dify.errors.total", unit="{error}"),
-            EnterpriseTelemetryCounter.FEEDBACK: meter.create_counter("dify.feedback.total", unit="{feedback}"),
+            EnterpriseTelemetryCounter.TOKENS: meter.create_counter("magicstudio.tokens.total", unit="{token}"),
+            EnterpriseTelemetryCounter.INPUT_TOKENS: meter.create_counter("magicstudio.tokens.input", unit="{token}"),
+            EnterpriseTelemetryCounter.OUTPUT_TOKENS: meter.create_counter("magicstudio.tokens.output", unit="{token}"),
+            EnterpriseTelemetryCounter.REQUESTS: meter.create_counter("magicstudio.requests.total", unit="{request}"),
+            EnterpriseTelemetryCounter.ERRORS: meter.create_counter("magicstudio.errors.total", unit="{error}"),
+            EnterpriseTelemetryCounter.FEEDBACK: meter.create_counter("magicstudio.feedback.total", unit="{feedback}"),
             EnterpriseTelemetryCounter.DATASET_RETRIEVALS: meter.create_counter(
-                "dify.dataset.retrievals.total", unit="{retrieval}"
+                "magicstudio.dataset.retrievals.total", unit="{retrieval}"
             ),
-            EnterpriseTelemetryCounter.APP_CREATED: meter.create_counter("dify.app.created.total", unit="{app}"),
-            EnterpriseTelemetryCounter.APP_UPDATED: meter.create_counter("dify.app.updated.total", unit="{app}"),
-            EnterpriseTelemetryCounter.APP_DELETED: meter.create_counter("dify.app.deleted.total", unit="{app}"),
+            EnterpriseTelemetryCounter.APP_CREATED: meter.create_counter("magicstudio.app.created.total", unit="{app}"),
+            EnterpriseTelemetryCounter.APP_UPDATED: meter.create_counter("magicstudio.app.updated.total", unit="{app}"),
+            EnterpriseTelemetryCounter.APP_DELETED: meter.create_counter("magicstudio.app.deleted.total", unit="{app}"),
         }
         self._histograms = {
-            EnterpriseTelemetryHistogram.WORKFLOW_DURATION: meter.create_histogram("dify.workflow.duration", unit="s"),
-            EnterpriseTelemetryHistogram.NODE_DURATION: meter.create_histogram("dify.node.duration", unit="s"),
-            EnterpriseTelemetryHistogram.MESSAGE_DURATION: meter.create_histogram("dify.message.duration", unit="s"),
+            EnterpriseTelemetryHistogram.WORKFLOW_DURATION: meter.create_histogram("magicstudio.workflow.duration", unit="s"),
+            EnterpriseTelemetryHistogram.NODE_DURATION: meter.create_histogram("magicstudio.node.duration", unit="s"),
+            EnterpriseTelemetryHistogram.MESSAGE_DURATION: meter.create_histogram("magicstudio.message.duration", unit="s"),
             EnterpriseTelemetryHistogram.MESSAGE_TTFT: meter.create_histogram(
-                "dify.message.time_to_first_token", unit="s"
+                "magicstudio.message.time_to_first_token", unit="s"
             ),
-            EnterpriseTelemetryHistogram.TOOL_DURATION: meter.create_histogram("dify.tool.duration", unit="s"),
+            EnterpriseTelemetryHistogram.TOOL_DURATION: meter.create_histogram("magicstudio.tool.duration", unit="s"),
             EnterpriseTelemetryHistogram.PROMPT_GENERATION_DURATION: meter.create_histogram(
-                "dify.prompt_generation.duration", unit="s"
+                "magicstudio.prompt_generation.duration", unit="s"
             ),
         }
 

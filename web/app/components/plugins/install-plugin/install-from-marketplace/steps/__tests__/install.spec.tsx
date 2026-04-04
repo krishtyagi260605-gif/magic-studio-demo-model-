@@ -98,7 +98,7 @@ vi.mock('../../../base/check-task-status', () => ({
 // Mock useAppContext
 vi.mock('@/context/app-context', () => ({
   useAppContext: () => ({
-    langGeniusVersionInfo: mockLangGeniusVersionInfo,
+    magicStudioVersionInfo: mockLangGeniusVersionInfo,
   }),
 }))
 
@@ -700,7 +700,7 @@ describe('Install Component (steps/install.tsx)', () => {
       expect(screen.getByTestId('has-installed')).toHaveTextContent('false')
     })
 
-    it('should handle null current_version in langGeniusVersionInfo', () => {
+    it('should handle null current_version in magicStudioVersionInfo', () => {
       mockLangGeniusVersionInfo = { current_version: null as unknown as string }
       mockPluginDeclaration = {
         manifest: { meta: { minimum_dify_version: '1.0.0' } },

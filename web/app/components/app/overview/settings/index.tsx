@@ -22,6 +22,7 @@ import Textarea from '@/app/components/base/textarea'
 import Tooltip from '@/app/components/base/tooltip'
 import { toast } from '@/app/components/base/ui/toast'
 import { ACCOUNT_SETTING_TAB } from '@/app/components/header/account-setting/constants'
+import { BRAND_PRIVACY_URL } from '@/constants/brand'
 import { useModalContext } from '@/context/modal-context'
 import { useProviderContext } from '@/context/provider-context'
 import { languages } from '@/i18n-config/language'
@@ -414,7 +415,7 @@ const SettingsModal: FC<ISettingsModalProps> = ({
                   <Trans
                     i18nKey={`${prefixSettings}.more.privacyPolicyTip`}
                     ns="appOverview"
-                    components={{ privacyPolicyLink: <Link href="https://dify.ai/privacy" target="_blank" rel="noopener noreferrer" className="text-text-accent" /> }}
+                    components={{ privacyPolicyLink: <Link href={BRAND_PRIVACY_URL} target="_blank" rel="noopener noreferrer" className="text-text-accent" /> }}
                   />
                 </p>
                 <Input

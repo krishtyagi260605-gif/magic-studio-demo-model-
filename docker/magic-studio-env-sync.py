@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # ================================================================
-# Dify Environment Variables Synchronization Script
+# Magic Studio Environment Variables Synchronization Script
 #
 # Features:
 # - Synchronize latest settings from .env.example to .env
@@ -369,7 +369,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
         Configured ArgumentParser instance.
     """
     parser = argparse.ArgumentParser(
-        prog="dify-env-sync",
+        prog="magic-studio-env-sync",
         description=(
             "Synchronize .env with .env.example: add new variables, "
             "preserve custom values, and report removed variables."
@@ -378,9 +378,9 @@ def build_arg_parser() -> argparse.ArgumentParser:
         epilog=(
             "Examples:\n"
             "  # Run from the docker/ directory (default)\n"
-            "  python dify-env-sync.py\n\n"
+            "  python magic-studio-env-sync.py\n\n"
             "  # Specify a custom working directory\n"
-            "  python dify-env-sync.py --dir /path/to/docker\n"
+            "  python magic-studio-env-sync.py --dir /path/to/docker\n"
         ),
     )
     parser.add_argument(
@@ -405,7 +405,7 @@ def main() -> None:
 
     work_dir = Path(args.dir).resolve()
 
-    log_info("=== Dify Environment Variables Synchronization Script ===")
+    log_info("=== Magic Studio Environment Variables Synchronization Script ===")
     log_info(f"Execution started: {datetime.now()}")
     log_info(f"Working directory: {work_dir}")
 

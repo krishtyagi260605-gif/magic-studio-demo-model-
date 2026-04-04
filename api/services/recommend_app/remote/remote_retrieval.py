@@ -12,14 +12,14 @@ logger = logging.getLogger(__name__)
 
 class RemoteRecommendAppRetrieval(RecommendAppRetrievalBase):
     """
-    Retrieval recommended app from dify official
+    Retrieval recommended app from magic studio official
     """
 
     def get_recommend_app_detail(self, app_id: str):
         try:
             result = self.fetch_recommended_app_detail_from_dify_official(app_id)
         except Exception as e:
-            logger.warning("fetch recommended app detail from dify official failed: %s, switch to built-in.", e)
+            logger.warning("fetch recommended app detail from magic studio official failed: %s, switch to built-in.", e)
             result = BuildInRecommendAppRetrieval.fetch_recommended_app_detail_from_builtin(app_id)
         return result
 
@@ -27,7 +27,7 @@ class RemoteRecommendAppRetrieval(RecommendAppRetrievalBase):
         try:
             result = self.fetch_recommended_apps_from_dify_official(language)
         except Exception as e:
-            logger.warning("fetch recommended apps from dify official failed: %s, switch to built-in.", e)
+            logger.warning("fetch recommended apps from magic studio official failed: %s, switch to built-in.", e)
             result = BuildInRecommendAppRetrieval.fetch_recommended_apps_from_builtin(language)
         return result
 
@@ -37,7 +37,7 @@ class RemoteRecommendAppRetrieval(RecommendAppRetrievalBase):
     @classmethod
     def fetch_recommended_app_detail_from_dify_official(cls, app_id: str) -> dict | None:
         """
-        Fetch recommended app detail from dify official.
+        Fetch recommended app detail from magic studio official.
         :param app_id: App ID
         :return:
         """
@@ -52,7 +52,7 @@ class RemoteRecommendAppRetrieval(RecommendAppRetrievalBase):
     @classmethod
     def fetch_recommended_apps_from_dify_official(cls, language: str):
         """
-        Fetch recommended apps from dify official.
+        Fetch recommended apps from magic studio official.
         :param language: language
         :return:
         """

@@ -1,7 +1,8 @@
-import type { Viewport } from '@/next'
+import type { Metadata, Viewport } from '@/next'
 import { Provider as JotaiProvider } from 'jotai/react'
 import { ThemeProvider } from 'next-themes'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
+import { BRAND_NAME, BRAND_OWNER } from '@/constants/brand'
 import GlobalPublicStoreProvider from '@/context/global-public-context'
 import { TanstackQueryInitializer } from '@/context/query-client'
 import { getDatasetMap } from '@/env'
@@ -24,6 +25,13 @@ export const viewport: Viewport = {
   userScalable: false,
 }
 
+export const metadata: Metadata = {
+  title: BRAND_NAME,
+  description: `${BRAND_NAME} is Krish Tyagi's low-code AI workflow studio for orchestrating models, knowledge, and automation.`,
+  applicationName: BRAND_NAME,
+  authors: [{ name: BRAND_OWNER }],
+}
+
 const LocaleLayout = async ({
   children,
 }: {
@@ -40,7 +48,7 @@ const LocaleLayout = async ({
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="Magic Studio" />
+        <meta name="apple-mobile-web-app-title" content={BRAND_NAME} />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/icon-192x192.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/icon-192x192.png" />

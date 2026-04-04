@@ -9,11 +9,11 @@ type GithubStarResponse = {
 }
 
 const defaultData: GithubStarResponse = {
-  repo: { stars: 110918 },
+  repo: { stars: 0 },
 }
 
 const getStar = async () => {
-  const res = await fetch('https://ungh.cc/repos/langgenius/dify')
+  const res = await fetch('https://ungh.cc/repos/krishtyagi260605-gif/magic-studio-demo-model-magic-studio')
 
   if (!res.ok)
     throw new Error('Failed to fetch github star')

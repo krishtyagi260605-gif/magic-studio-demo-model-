@@ -113,7 +113,7 @@ describe('EmbeddedChatbot Header', () => {
       window.dispatchEvent(new MessageEvent('message', {
         origin,
         data: {
-          type: 'dify-chatbot-config',
+          type: 'magic-studio-chatbot-config',
           payload,
         },
       }))
@@ -328,19 +328,19 @@ describe('EmbeddedChatbot Header', () => {
 
       await user.click(expandBtn)
       expect(mockPostMessage).toHaveBeenCalledWith(
-        { type: 'dify-chatbot-expand-change' },
+        { type: 'magic-studio-chatbot-expand-change' },
         'https://parent.com',
       )
     })
   })
 
   describe('Iframe Communication', () => {
-    it('should send dify-chatbot-iframe-ready on mount', () => {
+    it('should send magic-studio-chatbot-iframe-ready on mount', () => {
       const mockPostMessage = setupIframe()
       render(<Header title="Iframe" />)
 
       expect(mockPostMessage).toHaveBeenCalledWith(
-        { type: 'dify-chatbot-iframe-ready' },
+        { type: 'magic-studio-chatbot-iframe-ready' },
         '*',
       )
     })
@@ -358,7 +358,7 @@ describe('EmbeddedChatbot Header', () => {
       await user.click(expandBtn)
 
       expect(mockPostMessage).toHaveBeenCalledWith(
-        { type: 'dify-chatbot-expand-change' },
+        { type: 'magic-studio-chatbot-expand-change' },
         'https://parent.com',
       )
       expect(expandBtn.querySelector('.i-ri-collapse-diagonal-2-line')).toBeInTheDocument()
@@ -412,7 +412,7 @@ describe('EmbeddedChatbot Header', () => {
       render(<Header title="Iframe" />)
       // Directly call handleToggleExpand would require more setup, but we can verify it doesn't trigger unexpectedly
       expect(mockPostMessage).not.toHaveBeenCalledWith(
-        expect.objectContaining({ type: 'dify-chatbot-expand-change' }),
+        expect.objectContaining({ type: 'magic-studio-chatbot-expand-change' }),
         expect.anything(),
       )
     })

@@ -9,10 +9,10 @@ import PremiumBadge from '@/app/components/base/premium-badge'
 import ThemeSwitcher from '@/app/components/base/theme-switcher'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLinkItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@/app/components/base/ui/dropdown-menu'
 import { ACCOUNT_SETTING_TAB } from '@/app/components/header/account-setting/constants'
+import { BRAND_HELP_URL, BRAND_REPO_URL, BRAND_UPDATES_URL } from '@/constants/brand'
 import { IS_CLOUD_EDITION } from '@/config'
 import { useAppContext } from '@/context/app-context'
 import { useGlobalPublicStore } from '@/context/global-public-context'
-import { useDocLink } from '@/context/i18n'
 import { useModalContext } from '@/context/modal-context'
 import { useProviderContext } from '@/context/provider-context'
 import { env } from '@/env'
@@ -113,8 +113,7 @@ export default function AppSelector() {
   const { systemFeatures } = useGlobalPublicStore()
 
   const { t } = useTranslation()
-  const docLink = useDocLink()
-  const { userProfile, langGeniusVersionInfo, isCurrentWorkspaceOwner } = useAppContext()
+  const { userProfile, magicStudioVersionInfo, isCurrentWorkspaceOwner } = useAppContext()
   const { isEducationAccount } = useProviderContext()
   const { setShowAccountSettingModal } = useModalContext()
 
@@ -179,7 +178,7 @@ export default function AppSelector() {
             <>
               <AccountMenuSection>
                 <AccountMenuExternalItem
-                  href={docLink('/use-dify/getting-started/introduction')}
+                  href={BRAND_HELP_URL}
                   iconClassName="i-ri-book-open-line"
                   label={t('userProfile.helpCenter', { ns: 'common' })}
                   trailing={<ExternalLinkIndicator />}
@@ -190,13 +189,13 @@ export default function AppSelector() {
               <DropdownMenuSeparator className="my-0! bg-divider-subtle" />
               <AccountMenuSection>
                 <AccountMenuExternalItem
-                  href="https://roadmap.dify.ai"
+                  href={BRAND_UPDATES_URL}
                   iconClassName="i-ri-map-2-line"
                   label={t('userProfile.roadmap', { ns: 'common' })}
                   trailing={<ExternalLinkIndicator />}
                 />
                 <AccountMenuExternalItem
-                  href="https://github.com/langgenius/dify"
+                  href={BRAND_REPO_URL}
                   iconClassName="i-ri-github-line"
                   label={t('userProfile.github', { ns: 'common' })}
                   trailing={(
@@ -217,8 +216,8 @@ export default function AppSelector() {
                       }}
                       trailing={(
                         <div className="flex shrink-0 items-center">
-                          <div className="mr-2 text-text-tertiary system-xs-regular">{langGeniusVersionInfo.current_version}</div>
-                          <Indicator color={langGeniusVersionInfo.current_version === langGeniusVersionInfo.latest_version ? 'green' : 'orange'} />
+                          <div className="mr-2 text-text-tertiary system-xs-regular">{magicStudioVersionInfo.current_version}</div>
+                          <Indicator color={magicStudioVersionInfo.current_version === magicStudioVersionInfo.latest_version ? 'green' : 'orange'} />
                         </div>
                       )}
                     />
@@ -253,7 +252,7 @@ export default function AppSelector() {
         </DropdownMenuContent>
       </DropdownMenu>
       {
-        aboutVisible && <AccountAbout onCancel={() => setAboutVisible(false)} langGeniusVersionInfo={langGeniusVersionInfo} />
+        aboutVisible && <AccountAbout onCancel={() => setAboutVisible(false)} magicStudioVersionInfo={magicStudioVersionInfo} />
       }
     </div>
   )

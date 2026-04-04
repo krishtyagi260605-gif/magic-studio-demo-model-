@@ -798,18 +798,18 @@ html[data-theme="light"] {
 
   --color-saas-background: #ffffff;
   --color-saas-pricing-grid-bg: rgb(200 206 218 / 0.5);
-  --color-saas-dify-blue-static: #0033ff;
-  --color-saas-dify-blue-static-hover: #002cd6;
-  --color-saas-dify-blue-accessible: #0033ff;
-  --color-saas-dify-blue-inverted: #0033ff;
-  --color-saas-dify-blue-inverted-dimmed: #0033ff;
+  --color-saas-magic-blue-static: #0033ff;
+  --color-saas-magic-blue-static-hover: #002cd6;
+  --color-saas-magic-blue-accessible: #0033ff;
+  --color-saas-magic-blue-inverted: #0033ff;
+  --color-saas-magic-blue-inverted-dimmed: #0033ff;
 
   --color-saas-background-inverted: #0b0b0e;
   --color-saas-background-inverted-hover: #222225;
 
-  --color-dify-logo-blue: #0033ff;
-  --color-dify-logo-black: #000000;
-  --color-dify-logo-outline-1: rgb(0 0 0 / 0);
-  --color-dify-logo-outline-2: rgb(0 0 0 / 0);
+  --color-magic-studio-logo-blue: #0033ff;
+  --color-magic-studio-logo-black: #000000;
+  --color-magic-studio-logo-outline-1: rgb(0 0 0 / 0);
+  --color-magic-studio-logo-outline-2: rgb(0 0 0 / 0);
 
 }

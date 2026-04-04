@@ -1010,8 +1010,8 @@ class RagEtlConfig(BaseSettings):
 
     # TODO: This config is not only for rag etl, it is also for file upload, we should move it to file upload config
     ETL_TYPE: str = Field(
-        description="RAG ETL type ('dify' or 'Unstructured'), default to 'dify'",
-        default="dify",
+        description="RAG ETL type ('magic studio' or 'Unstructured'), default to 'magic studio'",
+        default="magic studio",
     )
 
     KEYWORD_DATA_SOURCE_TYPE: str = Field(

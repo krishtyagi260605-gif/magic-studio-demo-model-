@@ -18,7 +18,7 @@ import {
   OVERLAY_MIGRATION_LEGACY_BASE_FILES,
   OVERLAY_RESTRICTED_IMPORT_PATTERNS,
 } from './eslint.constants.mjs'
-import dify from './plugins/eslint/index.js'
+import magicStudio from './plugins/eslint/index.js'
 
 // Enable Tailwind CSS IntelliSense mode for ESLint runs
 // See: tailwind-css-plugin.ts
@@ -157,9 +157,9 @@ export default antfu(
     },
   },
   {
-    name: 'dify/custom/setup',
+    name: 'magic-studio/custom/setup',
     plugins: {
-      dify,
+      'magic-studio': magicStudio,
       hyoban,
     },
   },
@@ -177,8 +177,8 @@ export default antfu(
       'jsonc/sort-keys': 'error',
 
       'hyoban/i18n-flat-key': 'error',
-      'dify/no-extra-keys': 'error',
-      'dify/consistent-placeholders': 'error',
+      'magic-studio/no-extra-keys': 'error',
+      'magic-studio/consistent-placeholders': 'error',
     },
   },
   {
@@ -188,14 +188,14 @@ export default antfu(
     },
   },
   {
-    name: 'dify/base-ui-primitives',
+    name: 'magic-studio/base-ui-primitives',
     files: ['app/components/base/ui/**/*.tsx', 'app/components/base/avatar/**/*.tsx'],
     rules: {
       'react-refresh/only-export-components': 'off',
     },
   },
   {
-    name: 'dify/no-direct-next-imports',
+    name: 'magic-studio/no-direct-next-imports',
     files: [GLOB_TS, GLOB_TSX],
     ignores: ['next/**'],
     rules: {
@@ -206,7 +206,7 @@ export default antfu(
     },
   },
   {
-    name: 'dify/overlay-migration',
+    name: 'magic-studio/overlay-migration',
     files: [GLOB_TS, GLOB_TSX],
     ignores: [
       'next/**',

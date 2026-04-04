@@ -20,7 +20,7 @@ class LindormConfig(BaseSettings):
         default=None,
     )
     LINDORM_INDEX_TYPE: str | None = Field(
-        description="Lindorm Vector Index Type, hnsw or flat is available in dify",
+        description="Lindorm Vector Index Type; hnsw or flat is available in Magic Studio.",
         default="hnsw",
     )
     LINDORM_DISTANCE_TYPE: str | None = Field(

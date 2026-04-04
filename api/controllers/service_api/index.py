@@ -8,7 +8,7 @@ from controllers.service_api import service_api_ns
 class IndexApi(Resource):
     def get(self):
         return {
-            "welcome": "Dify OpenAPI",
+            "welcome": "Magic Studio OpenAPI",
             "api_version": "v1",
             "server_version": magic_studio_config.project.version,
         }

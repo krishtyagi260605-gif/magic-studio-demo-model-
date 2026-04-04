@@ -420,7 +420,7 @@ Both your input and output should be in JSON format.
 ! Above is the schema for output content !
 
 When you are modifying the code, you should remember:
-- Do not use print, this not work in dify sandbox.
+- Do not use print, this does not work in the Magic Studio sandbox.
 - Do not try dangerous call like deleting files. It's PROHIBITED.
 - Do not use any library that is not built-in in with Python.
 - Get inputs from the parameters of the function and have explicit type annotations.

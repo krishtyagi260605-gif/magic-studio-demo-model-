@@ -20,11 +20,11 @@ from graphon.variable_loader import DUMMY_VARIABLE_LOADER, VariableLoader, load_
 from configs import magic_studio_config
 from context import capture_current_context
 from core.app.apps.exc import GenerateTaskStoppedError
-from core.app.entities.app_invoke_entities import InvokeFrom, UserFrom, build_dify_run_context
+from core.app.entities.app_invoke_entities import InvokeFrom, UserFrom, build_magic_studio_run_context
 from core.app.file_access import DatabaseFileAccessController
 from core.app.workflow.layers.llm_quota import LLMQuotaLayer
 from core.app.workflow.layers.observability import ObservabilityLayer
-from core.workflow.node_factory import DifyNodeFactory, is_start_node_type, resolve_workflow_node_class
+from core.workflow.node_factory import MagicStudioNodeFactory, is_start_node_type, resolve_workflow_node_class
 from core.workflow.system_variables import (
     default_system_variables,
     get_node_creation_preload_selectors,
@@ -77,7 +77,7 @@ class _WorkflowChildEngineBuilder:
             start_at=time.perf_counter(),
             execution_context=parent_graph_runtime_state.execution_context,
         )
-        node_factory = DifyNodeFactory(
+        node_factory = MagicStudioNodeFactory(
             graph_init_params=graph_init_params,
             graph_runtime_state=child_graph_runtime_state,
         )
@@ -235,7 +235,7 @@ class WorkflowEntry:
         graph_init_params = GraphInitParams(
             workflow_id=workflow.id,
             graph_config=workflow.graph_dict,
-            run_context=build_dify_run_context(
+            run_context=build_magic_studio_run_context(
                 tenant_id=workflow.tenant_id,
                 app_id=workflow.app_id,
                 user_id=user_id,
@@ -293,7 +293,7 @@ class WorkflowEntry:
             )
 
         # init workflow run state
-        node_factory = DifyNodeFactory(
+        node_factory = MagicStudioNodeFactory(
             graph_init_params=graph_init_params,
             graph_runtime_state=graph_runtime_state,
         )
@@ -393,7 +393,7 @@ class WorkflowEntry:
         graph_init_params = GraphInitParams(
             workflow_id="",
             graph_config=graph_dict,
-            run_context=build_dify_run_context(
+            run_context=build_magic_studio_run_context(
                 tenant_id=tenant_id,
                 app_id="",
                 user_id=user_id,
@@ -410,7 +410,7 @@ class WorkflowEntry:
 
         # init workflow run state
         node_config = NodeConfigDictAdapter.validate_python({"id": node_id, "data": node_data})
-        node_factory = DifyNodeFactory(
+        node_factory = MagicStudioNodeFactory(
             graph_init_params=graph_init_params,
             graph_runtime_state=graph_runtime_state,
         )

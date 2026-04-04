@@ -9,7 +9,7 @@ from configs import magic_studio_config
 from core.plugin.entities.plugin_daemon import CredentialType, PluginBasicBooleanResponse, PluginToolProviderEntity
 from core.plugin.impl.base import BasePluginClient
 from core.plugin.utils.chunk_merger import merge_blob_chunks
-from core.schemas.resolver import resolve_dify_schema_refs
+from core.schemas.resolver import resolve_magic_studio_schema_refs
 from core.tools.entities.tool_entities import ToolInvokeMessage, ToolParameter
 from models.provider_ids import GenericProviderID, ToolProviderID
 
@@ -28,7 +28,7 @@ class PluginToolManager(BasePluginClient):
                     tool["identity"]["provider"] = provider_name
                     # resolve refs
                     if tool.get("output_schema"):
-                        tool["output_schema"] = resolve_dify_schema_refs(tool["output_schema"])
+                        tool["output_schema"] = resolve_magic_studio_schema_refs(tool["output_schema"])
 
             return json_response
 
@@ -62,7 +62,7 @@ class PluginToolManager(BasePluginClient):
                     tool["identity"]["provider"] = tool_provider_id.provider_name
                     # resolve refs
                     if tool.get("output_schema"):
-                        tool["output_schema"] = resolve_dify_schema_refs(tool["output_schema"])
+                        tool["output_schema"] = resolve_magic_studio_schema_refs(tool["output_schema"])
 
             return json_response
 

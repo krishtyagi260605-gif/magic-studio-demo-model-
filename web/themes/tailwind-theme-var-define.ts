@@ -798,19 +798,19 @@ const vars = {
 
   'saas-background': 'var(--color-saas-background)',
   'saas-pricing-grid-bg': 'var(--color-saas-pricing-grid-bg)',
-  'saas-dify-blue-static': 'var(--color-saas-dify-blue-static)',
-  'saas-dify-blue-static-hover': 'var(--color-saas-dify-blue-static-hover)',
-  'saas-dify-blue-accessible': 'var(--color-saas-dify-blue-accessible)',
-  'saas-dify-blue-inverted': 'var(--color-saas-dify-blue-inverted)',
-  'saas-dify-blue-inverted-dimmed': 'var(--color-saas-dify-blue-inverted-dimmed)',
+  'saas-magic-blue-static': 'var(--color-saas-magic-blue-static)',
+  'saas-magic-blue-static-hover': 'var(--color-saas-magic-blue-static-hover)',
+  'saas-magic-blue-accessible': 'var(--color-saas-magic-blue-accessible)',
+  'saas-magic-blue-inverted': 'var(--color-saas-magic-blue-inverted)',
+  'saas-magic-blue-inverted-dimmed': 'var(--color-saas-magic-blue-inverted-dimmed)',
 
   'saas-background-inverted': 'var(--color-saas-background-inverted)',
   'saas-background-inverted-hover': 'var(--color-saas-background-inverted-hover)',
 
-  'dify-logo-blue': 'var(--color-dify-logo-blue)',
-  'dify-logo-black': 'var(--color-dify-logo-black)',
-  'dify-logo-outline-1': 'var(--color-dify-logo-outline-1)',
-  'dify-logo-outline-2': 'var(--color-dify-logo-outline-2)',
+  'magic-studio-logo-blue': 'var(--color-magic-studio-logo-blue)',
+  'magic-studio-logo-black': 'var(--color-magic-studio-logo-black)',
+  'magic-studio-logo-outline-1': 'var(--color-magic-studio-logo-outline-1)',
+  'magic-studio-logo-outline-2': 'var(--color-magic-studio-logo-outline-2)',
 
 }
 export default vars

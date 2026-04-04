@@ -60,7 +60,7 @@ vi.mock('../../../base/check-task-status', () => ({
 const mockLangGeniusVersionInfo = { current_version: '1.0.0' }
 vi.mock('@/context/app-context', () => ({
   useAppContext: () => ({
-    langGeniusVersionInfo: mockLangGeniusVersionInfo,
+    magicStudioVersionInfo: mockLangGeniusVersionInfo,
   }),
 }))
 

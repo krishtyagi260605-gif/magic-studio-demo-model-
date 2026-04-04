@@ -27,17 +27,20 @@ const Layout = ({ children }: { children: ReactNode }) => {
           <EventEmitterContextProvider>
             <ProviderContextProvider>
               <ModalContextProvider>
-                <HeaderWrapper>
-                  <Header />
-                </HeaderWrapper>
-                <RoleRouteGuard>
-                  {children}
-                </RoleRouteGuard>
-                <InSiteMessageNotification />
-                <PartnerStack />
-                <ReadmePanel />
-                <GotoAnything />
-                <Splash />
+                <div className="relative min-h-screen overflow-hidden bg-[linear-gradient(180deg,#091120_0%,#060b16_35%,#050913_100%)]">
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(93,177,255,0.14),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(202,180,255,0.08),transparent_26%)]" />
+                  <HeaderWrapper>
+                    <Header />
+                  </HeaderWrapper>
+                  <RoleRouteGuard>
+                    {children}
+                  </RoleRouteGuard>
+                  <InSiteMessageNotification />
+                  <PartnerStack />
+                  <ReadmePanel />
+                  <GotoAnything />
+                  <Splash />
+                </div>
               </ModalContextProvider>
             </ProviderContextProvider>
           </EventEmitterContextProvider>

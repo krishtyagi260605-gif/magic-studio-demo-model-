@@ -36,7 +36,7 @@ from sqlalchemy.orm import Session, sessionmaker
 from configs import magic_studio_config
 from core.app.apps.advanced_chat.app_config_manager import AdvancedChatAppConfigManager
 from core.app.apps.workflow.app_config_manager import WorkflowAppConfigManager
-from core.app.entities.app_invoke_entities import InvokeFrom, UserFrom, build_dify_run_context
+from core.app.entities.app_invoke_entities import InvokeFrom, UserFrom, build_magic_studio_run_context
 from core.app.file_access import DatabaseFileAccessController
 from core.plugin.impl.model_runtime_factory import create_plugin_model_assembly, create_plugin_provider_manager
 from core.repositories import DifyCoreRepositoryFactory
@@ -48,7 +48,7 @@ from core.workflow.human_input_compat import (
     parse_human_input_delivery_methods,
 )
 from core.workflow.node_factory import LATEST_VERSION, get_node_type_classes_mapping, is_start_node_type
-from core.workflow.node_runtime import DifyHumanInputNodeRuntime, apply_dify_debug_email_recipient
+from core.workflow.node_runtime import MagicStudioHumanInputNodeRuntime, apply_magic_studio_debug_email_recipient
 from core.workflow.system_variables import build_bootstrap_variables, build_system_variables, default_system_variables
 from core.workflow.variable_pool_initializer import add_node_inputs_to_pool, add_variables_to_pool
 from core.workflow.workflow_entry import WorkflowEntry
@@ -178,7 +178,7 @@ class WorkflowService:
         Get published workflow. 
         Magic Studio: Prioritizes workflow with environment='production'.
         """
-        # 1. Try to fetch by app_model.workflow_id (Standard Dify/Magic Studio pointer)
+        # 1. Try to fetch by app_model.workflow_id (standard workflow pointer)
         if app_model.workflow_id:
             workflow = db.session.scalar(
                 select(Workflow)
@@ -1069,7 +1069,7 @@ class WorkflowService:
         )
         if delivery_method is None:
             raise ValueError("Delivery method not found.")
-        delivery_method = apply_dify_debug_email_recipient(
+        delivery_method = apply_magic_studio_debug_email_recipient(
             delivery_method,
             enabled=True,
             actor_id=account.id,
@@ -1186,7 +1186,7 @@ class WorkflowService:
         graph_init_params = GraphInitParams(
             workflow_id=workflow.id,
             graph_config=workflow.graph_dict,
-            run_context=build_dify_run_context(
+            run_context=build_magic_studio_run_context(
                 tenant_id=workflow.tenant_id,
                 app_id=workflow.app_id,
                 user_id=account.id,
@@ -1204,7 +1204,7 @@ class WorkflowService:
             config=node_config,
             graph_init_params=graph_init_params,
             graph_runtime_state=graph_runtime_state,
-            runtime=DifyHumanInputNodeRuntime(graph_init_params.run_context),
+            runtime=MagicStudioHumanInputNodeRuntime(graph_init_params.run_context),
         )
         return node
 
