@@ -54,8 +54,9 @@ ARG NODE_MAJOR=22
 ARG NODE_PACKAGE_VERSION=22.21.0-1nodesource1
 ARG NODESOURCE_KEY_FPR=6F71F525282841EEDAF851B42F59B5F99B1BE0B4
 RUN groupadd -r -g ${magicstudio_uid} magicstudio && \
-    useradd -r -u ${magicstudio_uid} -g ${magicstudio_uid} -s /bin/bash magicstudio && \
-    chown -R magicstudio:magicstudio /app
+    useradd -r -m -d /home/magicstudio -u ${magicstudio_uid} -g ${magicstudio_uid} -s /bin/bash magicstudio && \
+    mkdir -p /home/magicstudio && \
+    chown -R magicstudio:magicstudio /app /home/magicstudio
 
 RUN \
     apt-get update \
@@ -115,6 +116,7 @@ COPY --chown=magicstudio:magicstudio --chmod=755 docker/entrypoint.sh /entrypoin
 ARG COMMIT_SHA
 ENV COMMIT_SHA=${COMMIT_SHA}
 ENV NLTK_DATA=/usr/local/share/nltk_data
+ENV HOME=/home/magicstudio
 
 USER magicstudio
 

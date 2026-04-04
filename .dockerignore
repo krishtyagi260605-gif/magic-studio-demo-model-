@@ -1,5 +1,0 @@
-docker/volumes
-.git
-node_modules
-web/.next
-api/.venv
